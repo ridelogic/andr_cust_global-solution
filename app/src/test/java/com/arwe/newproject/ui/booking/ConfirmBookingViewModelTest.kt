@@ -9,6 +9,7 @@ import com.arwe.newproject.data.repository.CustomerAuthRepository
 import com.arwe.newproject.data.repository.ProductBatteryTypeListResult
 import com.arwe.newproject.data.repository.RegisterResult
 import com.arwe.newproject.data.repository.SendOtpResult
+import com.arwe.newproject.data.repository.ServiceRequestListResult
 import com.arwe.newproject.data.repository.ServiceRequestResult
 import com.arwe.newproject.data.repository.VerifyOtpResult
 import kotlinx.coroutines.CompletableDeferred
@@ -88,6 +89,9 @@ class ConfirmBookingViewModelTest {
             capturedComplaint = complaint
             return createServiceRequestDeferred.await()
         }
+
+        override suspend fun getServiceRequests(): ServiceRequestListResult =
+            throw UnsupportedOperationException("not used by this test")
     }
 
     @Test

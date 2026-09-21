@@ -10,6 +10,7 @@ import com.arwe.newproject.data.repository.CustomerAuthRepository
 import com.arwe.newproject.data.repository.ProductBatteryTypeListResult
 import com.arwe.newproject.data.repository.RegisterResult
 import com.arwe.newproject.data.repository.SendOtpResult
+import com.arwe.newproject.data.repository.ServiceRequestListResult
 import com.arwe.newproject.data.repository.ServiceRequestResult
 import com.arwe.newproject.data.repository.VerifyOtpResult
 import kotlinx.coroutines.CompletableDeferred
@@ -85,6 +86,9 @@ class AddAddressViewModelTest {
             serviceTypeId: Long, customerAddressId: Long, complaint: String,
             preferredDate: String?, preferredTimeFrom: String?, preferredTimeTo: String?
         ): ServiceRequestResult = throw UnsupportedOperationException("not used by this test")
+
+        override suspend fun getServiceRequests(): ServiceRequestListResult =
+            throw UnsupportedOperationException("not used by this test")
     }
 
     private fun address() = CustomerAddressResponse(

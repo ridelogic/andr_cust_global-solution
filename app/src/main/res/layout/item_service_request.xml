@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_category_card"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?attr/selectableItemBackground"
+    android:padding="@dimen/category_card_padding">
+
+    <TextView
+        android:id="@+id/service_request_type"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-medium"
+        android:textColor="@color/text_primary"
+        android:textSize="@dimen/login_subtitle_text_size"
+        app:layout_constraintEnd_toStartOf="@id/service_request_status"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Repair" />
+
+    <TextView
+        android:id="@+id/service_request_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_status_pill"
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="4dp"
+        android:textColor="@color/primary_blue"
+        android:textSize="@dimen/category_description_text_size"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Pending" />
+
+    <TextView
+        android:id="@+id/service_request_ticket"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:textColor="@color/text_secondary"
+        android:textSize="@dimen/category_description_text_size"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/service_request_type"
+        tools:text="TCK-0202" />
+
+    <ImageView
+        android:id="@+id/service_request_date_icon"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_marginTop="10dp"
+        android:importantForAccessibility="no"
+        android:src="@drawable/ic_calendar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/service_request_ticket"
+        app:tint="@color/text_secondary" />
+
+    <TextView
+        android:id="@+id/service_request_date_time"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:textColor="@color/text_secondary"
+        android:textSize="@dimen/category_description_text_size"
+        app:layout_constraintBottom_toBottomOf="@id/service_request_date_icon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/service_request_date_icon"
+        app:layout_constraintTop_toTopOf="@id/service_request_date_icon"
+        tools:text="25 Sep 2026 · 09:00 AM" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

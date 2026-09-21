@@ -9,6 +9,7 @@ import com.arwe.newproject.data.remote.dto.CustomerRegisterResponse
 import com.arwe.newproject.data.remote.dto.CustomerRegisterWithOtpRequest
 import com.arwe.newproject.data.remote.dto.CustomerSendOtpRequest
 import com.arwe.newproject.data.remote.dto.CustomerSendOtpResponse
+import com.arwe.newproject.data.remote.dto.CustomerServiceRequestListResponse
 import com.arwe.newproject.data.remote.dto.CustomerServiceRequestRequest
 import com.arwe.newproject.data.remote.dto.CustomerServiceRequestResponse
 import com.arwe.newproject.data.remote.dto.CustomerVerifyOtpRequest
@@ -64,6 +65,9 @@ class BatteryTypesRepositoryTest {
         override suspend fun createServiceRequest(
             request: CustomerServiceRequestRequest
         ): Response<CustomerServiceRequestResponse> =
+            throw UnsupportedOperationException("not used by this test")
+
+        override suspend fun getServiceRequests(): Response<CustomerServiceRequestListResponse> =
             throw UnsupportedOperationException("not used by this test")
     }
 

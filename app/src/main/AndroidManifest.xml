@@ -70,6 +70,12 @@
             android:theme="@style/Theme.Newproject" />
 
         <activity
+            android:name=".ui.myservices.MyServicesActivity"
+            android:exported="false"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.Newproject" />
+
+        <activity
             android:name=".ui.booking.ServiceCategoryActivity"
             android:exported="false"
             android:label="@string/app_name"

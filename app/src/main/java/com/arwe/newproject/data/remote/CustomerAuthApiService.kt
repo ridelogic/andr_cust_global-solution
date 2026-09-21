@@ -8,6 +8,7 @@ import com.arwe.newproject.data.remote.dto.CustomerRegisterResponse
 import com.arwe.newproject.data.remote.dto.CustomerRegisterWithOtpRequest
 import com.arwe.newproject.data.remote.dto.CustomerSendOtpRequest
 import com.arwe.newproject.data.remote.dto.CustomerSendOtpResponse
+import com.arwe.newproject.data.remote.dto.CustomerServiceRequestListResponse
 import com.arwe.newproject.data.remote.dto.CustomerServiceRequestRequest
 import com.arwe.newproject.data.remote.dto.CustomerServiceRequestResponse
 import com.arwe.newproject.data.remote.dto.CustomerVerifyOtpRequest
@@ -84,4 +85,11 @@ interface CustomerAuthApiService {
     suspend fun createServiceRequest(
         @Body request: CustomerServiceRequestRequest
     ): Response<CustomerServiceRequestResponse>
+
+    // routes/api.php: Route::prefix('service-requests')->... -> Route::get('/',
+    // [CustomerServiceRequestController::class, 'index']) - authenticated (auth:sanctum +
+    // customer.active). See ServiceRequestController::index() - already ordered newest-first via
+    // ->latest(); no query params are sent (no status filter UI yet).
+    @GET("customer/service-requests")
+    suspend fun getServiceRequests(): Response<CustomerServiceRequestListResponse>
 }

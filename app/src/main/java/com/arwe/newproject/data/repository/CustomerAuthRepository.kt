@@ -54,6 +54,8 @@ interface CustomerAuthRepository {
         preferredTimeFrom: String?,
         preferredTimeTo: String?
     ): ServiceRequestResult
+
+    suspend fun getServiceRequests(): ServiceRequestListResult
 }
 
 /**
@@ -367,6 +369,32 @@ class DefaultCustomerAuthRepository(
             ServiceRequestResult.Error(ApiErrorReason.NETWORK_UNAVAILABLE, null)
         } catch (unexpected: Exception) {
             ServiceRequestResult.Error(ApiErrorReason.UNKNOWN, null)
+        }
+    }
+
+    /** Talks to GET customer/service-requests - see ServiceRequestController::index() for the
+     * exact contract; the response is the "data" array of a paginated resource collection, not a
+     * bare array - see CustomerServiceRequestListResponse's doc. */
+    override suspend fun getServiceRequests(): ServiceRequestListResult = withContext(Dispatchers.IO) {
+        try {
+            val response = apiService.getServiceRequests()
+            if (response.isSuccessful) {
+                val body = response.body()
+                if (body != null) {
+                    ServiceRequestListResult.Success(body.data)
+                } else {
+                    ServiceRequestListResult.Error(ApiErrorReason.UNKNOWN, null)
+                }
+            } else {
+                val (reason, message, fieldErrors) = classifyHttpError(response)
+                ServiceRequestListResult.Error(reason, message, fieldErrors)
+            }
+        } catch (timeout: SocketTimeoutException) {
+            ServiceRequestListResult.Error(ApiErrorReason.TIMEOUT, null)
+        } catch (network: IOException) {
+            ServiceRequestListResult.Error(ApiErrorReason.NETWORK_UNAVAILABLE, null)
+        } catch (unexpected: Exception) {
+            ServiceRequestListResult.Error(ApiErrorReason.UNKNOWN, null)
         }
     }
 

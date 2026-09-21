@@ -9,6 +9,7 @@ import com.arwe.newproject.databinding.ActivityHomeBinding
 import com.arwe.newproject.session.SessionManager
 import com.arwe.newproject.ui.booking.ServiceCategoryActivity
 import com.arwe.newproject.ui.common.PlaceholderActivity
+import com.arwe.newproject.ui.myservices.MyServicesActivity
 
 class HomeActivity : AppCompatActivity() {
 
@@ -32,7 +33,7 @@ class HomeActivity : AppCompatActivity() {
         binding.cardBookService.setOnClickListener {
             startActivity(Intent(this, ServiceCategoryActivity::class.java))
         }
-        binding.cardMyServices.setOnClickListener { openPlaceholder(R.string.quick_service_my_services) }
+        binding.cardMyServices.setOnClickListener { startActivity(Intent(this, MyServicesActivity::class.java)) }
         binding.cardActiveService.setOnClickListener { openPlaceholder(R.string.quick_service_active) }
         binding.cardServiceHistory.setOnClickListener { openPlaceholder(R.string.quick_service_history) }
 
@@ -41,7 +42,7 @@ class HomeActivity : AppCompatActivity() {
             when (item.itemId) {
                 R.id.nav_home -> true
                 R.id.nav_my_services -> {
-                    openPlaceholder(R.string.quick_service_my_services)
+                    startActivity(Intent(this, MyServicesActivity::class.java))
                     false
                 }
                 R.id.nav_support -> {

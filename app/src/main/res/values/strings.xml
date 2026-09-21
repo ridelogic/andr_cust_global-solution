@@ -225,6 +225,18 @@
     <string name="address_list_error_unauthorized">Your session has expired. Please log in again.</string>
     <string name="address_list_error_generic">Could not load your addresses. Please try again.</string>
 
+    <string name="my_services_header_title">My Services</string>
+    <string name="my_services_header_subtitle">Track your service requests</string>
+    <string name="my_services_empty_title">No services booked yet</string>
+    <string name="my_services_empty_subtitle">Book a service to see it listed here</string>
+    <string name="my_services_error_unauthorized">Your session has expired. Please log in again.</string>
+    <string name="my_services_error_generic">Could not load your services. Please try again.</string>
+    <string name="my_services_details_coming_soon">Service details will be available soon</string>
+    <string name="my_services_date_time_format">%1$s · %2$s</string>
+    <string name="my_services_date_only_format">%1$s</string>
+    <string name="my_services_no_preferred_schedule">Date &amp; time not selected</string>
+    <string name="cd_my_services_progress">Loading your services</string>
+
     <string name="add_address_title">Add New Address</string>
     <string name="add_address_subtitle">Enter the address where you need the service</string>
     <string name="add_address_hint_type">Address Label (e.g. Home, Office)</string>
