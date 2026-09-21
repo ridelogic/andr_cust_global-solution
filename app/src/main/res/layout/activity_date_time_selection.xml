@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/booking_page_background"
+    tools:context=".ui.booking.DateTimeSelectionActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/header_container"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/login_header_navy"
+        android:paddingHorizontal="@dimen/login_content_horizontal_margin"
+        android:paddingTop="@dimen/login_content_horizontal_margin"
+        android:paddingBottom="@dimen/login_content_horizontal_margin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/back_button"
+            android:layout_width="@dimen/login_back_button_size"
+            android:layout_height="@dimen/login_back_button_size"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/cd_back"
+            android:padding="8dp"
+            android:src="@drawable/ic_arrow_back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/white" />
+
+        <TextView
+            android:id="@+id/header_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="@string/date_time_selection_header_title"
+            android:textColor="@color/white"
+            android:textSize="@dimen/login_title_text_size"
+            app:layout_constraintBottom_toBottomOf="@id/back_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/back_button"
+            app:layout_constraintTop_toTopOf="@id/back_button" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/content_scroll"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toTopOf="@id/continue_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/header_container">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingTop="@dimen/home_section_spacing"
+            android:paddingBottom="@dimen/home_section_spacing">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/login_content_horizontal_margin"
+                android:fontFamily="sans-serif-medium"
+                android:text="@string/date_time_selection_content_title"
+                android:textColor="@color/text_primary"
+                android:textSize="@dimen/login_subtitle_text_size" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/login_content_horizontal_margin"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/bg_category_card"
+                android:orientation="vertical"
+                android:paddingVertical="8dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="4dp">
+
+                    <ImageButton
+                        android:id="@+id/month_prev_button"
+                        android:layout_width="@dimen/calendar_month_nav_button_size"
+                        android:layout_height="@dimen/calendar_month_nav_button_size"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:contentDescription="@string/cd_month_previous"
+                        android:padding="4dp"
+                        android:src="@drawable/ic_arrow_back"
+                        app:tint="@color/text_primary" />
+
+                    <TextView
+                        android:id="@+id/month_label"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="sans-serif-medium"
+                        android:gravity="center"
+                        android:textColor="@color/text_primary"
+                        android:textSize="@dimen/login_subtitle_text_size"
+                        tools:text="September 2026" />
+
+                    <ImageButton
+                        android:id="@+id/month_next_button"
+                        android:layout_width="@dimen/calendar_month_nav_button_size"
+                        android:layout_height="@dimen/calendar_month_nav_button_size"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:contentDescription="@string/cd_month_next"
+                        android:padding="4dp"
+                        android:scaleX="-1"
+                        android:src="@drawable/ic_arrow_back"
+                        app:tint="@color/text_primary" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="8dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="@string/calendar_weekday_sun"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="@dimen/category_description_text_size" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="@string/calendar_weekday_mon"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="@dimen/category_description_text_size" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="@string/calendar_weekday_tue"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="@dimen/category_description_text_size" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="@string/calendar_weekday_wed"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="@dimen/category_description_text_size" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="@string/calendar_weekday_thu"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="@dimen/category_description_text_size" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="@string/calendar_weekday_fri"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="@dimen/category_description_text_size" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="@string/calendar_weekday_sat"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="@dimen/category_description_text_size" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/calendar_grid"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:orientation="vertical"
+                    android:paddingHorizontal="8dp"
+                    android:paddingBottom="4dp" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/login_content_horizontal_margin"
+                android:layout_marginTop="@dimen/home_section_spacing"
+                android:fontFamily="sans-serif-medium"
+                android:text="@string/date_time_selection_time_section_title"
+                android:textColor="@color/text_primary"
+                android:textSize="@dimen/login_subtitle_text_size" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/login_content_horizontal_margin"
+                android:layout_marginTop="12dp"
+                android:baselineAligned="false"
+                android:orientation="horizontal">
+
+                <include
+                    android:id="@+id/time_slot_9am"
+                    layout="@layout/item_time_slot"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/home_quick_card_spacing"
+                    android:layout_weight="1" />
+
+                <include
+                    android:id="@+id/time_slot_10am"
+                    layout="@layout/item_time_slot"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/login_content_horizontal_margin"
+                android:layout_marginTop="@dimen/home_quick_card_spacing"
+                android:baselineAligned="false"
+                android:orientation="horizontal">
+
+                <include
+                    android:id="@+id/time_slot_11am"
+                    layout="@layout/item_time_slot"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/home_quick_card_spacing"
+                    android:layout_weight="1" />
+
+                <include
+                    android:id="@+id/time_slot_12pm"
+                    layout="@layout/item_time_slot"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/login_content_horizontal_margin"
+                android:layout_marginTop="@dimen/home_quick_card_spacing"
+                android:baselineAligned="false"
+                android:orientation="horizontal">
+
+                <include
+                    android:id="@+id/time_slot_2pm"
+                    layout="@layout/item_time_slot"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/home_quick_card_spacing"
+                    android:layout_weight="1" />
+
+                <include
+                    android:id="@+id/time_slot_3pm"
+                    layout="@layout/item_time_slot"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/login_content_horizontal_margin"
+                android:layout_marginTop="@dimen/home_quick_card_spacing"
+                android:baselineAligned="false"
+                android:orientation="horizontal">
+
+                <include
+                    android:id="@+id/time_slot_4pm"
+                    layout="@layout/item_time_slot"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/home_quick_card_spacing"
+                    android:layout_weight="1" />
+
+                <include
+                    android:id="@+id/time_slot_5pm"
+                    layout="@layout/item_time_slot"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/login_content_horizontal_margin"
+                android:layout_marginTop="@dimen/home_quick_card_spacing"
+                android:baselineAligned="false"
+                android:orientation="horizontal">
+
+                <include
+                    android:id="@+id/time_slot_6pm"
+                    layout="@layout/item_time_slot"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/home_quick_card_spacing"
+                    android:layout_weight="1" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/continue_button"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/login_button_height"
+        android:layout_marginHorizontal="@dimen/login_content_horizontal_margin"
+        android:layout_marginBottom="@dimen/login_content_horizontal_margin"
+        android:backgroundTint="@color/selector_continue_button_background"
+        android:enabled="false"
+        android:text="@string/address_selection_next"
+        android:textAllCaps="false"
+        android:textColor="@color/selector_continue_button_text"
+        app:cornerRadius="@dimen/login_button_corner_radius"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

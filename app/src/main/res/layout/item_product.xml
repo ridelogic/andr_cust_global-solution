@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_category_card"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?attr/selectableItemBackground"
+    android:padding="@dimen/category_card_padding">
+
+    <ImageView
+        android:id="@+id/product_icon"
+        android:layout_width="@dimen/home_quick_card_icon_size"
+        android:layout_height="@dimen/home_quick_card_icon_size"
+        android:importantForAccessibility="no"
+        android:src="@drawable/ic_category_battery"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/primary_blue" />
+
+    <TextView
+        android:id="@+id/product_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/category_text_margin_start"
+        android:fontFamily="sans-serif-medium"
+        android:textColor="@color/text_primary"
+        android:textSize="@dimen/login_subtitle_text_size"
+        app:layout_constraintBottom_toTopOf="@id/product_description"
+        app:layout_constraintEnd_toStartOf="@id/selection_indicator"
+        app:layout_constraintStart_toEndOf="@id/product_icon"
+        app:layout_constraintTop_toTopOf="@id/product_icon"
+        app:layout_constraintVertical_chainStyle="packed"
+        tools:text="Car Battery" />
+
+    <TextView
+        android:id="@+id/product_description"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/category_text_margin_start"
+        android:layout_marginTop="2dp"
+        android:textColor="@color/text_secondary"
+        android:textSize="@dimen/category_description_text_size"
+        app:layout_constraintBottom_toBottomOf="@id/product_icon"
+        app:layout_constraintEnd_toStartOf="@id/selection_indicator"
+        app:layout_constraintStart_toEndOf="@id/product_icon"
+        app:layout_constraintTop_toBottomOf="@id/product_title"
+        tools:text="Car battery service and support" />
+
+    <ImageView
+        android:id="@+id/selection_indicator"
+        android:layout_width="@dimen/home_icon_size"
+        android:layout_height="@dimen/home_icon_size"
+        android:duplicateParentState="true"
+        android:importantForAccessibility="no"
+        android:src="@drawable/selector_radio_indicator"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

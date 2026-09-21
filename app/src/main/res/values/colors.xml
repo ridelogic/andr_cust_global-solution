@@ -7,4 +7,24 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="splash_bottom_accent">#D6EAF8</color>
+    <color name="splash_progress_tint">#4FA8DA</color>
+    <color name="text_primary">#212121</color>
+    <color name="text_secondary">#757575</color>
+
+    <color name="login_header_navy">#14294B</color>
+    <color name="primary_blue">#2F6FED</color>
+    <color name="input_background">#F2F4F7</color>
+    <color name="divider_color">#E3E6EA</color>
+    <color name="google_button_border">#DADCE0</color>
+
+    <color name="notification_dot">#E53935</color>
+    <color name="banner_subtitle_text">#E3ECFD</color>
+    <color name="carousel_dot_inactive">#66FFFFFF</color>
+    <color name="illustration_placeholder_bg">#33FFFFFF</color>
+
+    <color name="booking_page_background">#F4F7FB</color>
+
+    <color name="calendar_day_disabled_text">#BDBDBD</color>
 </resources>

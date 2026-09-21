@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="@dimen/date_slot_width"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_time_slot"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?attr/selectableItemBackground"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:paddingVertical="12dp">
+
+    <TextView
+        android:id="@+id/date_day_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/selector_time_slot_text"
+        android:textSize="@dimen/category_description_text_size"
+        tools:text="Fri" />
+
+    <TextView
+        android:id="@+id/date_day_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:fontFamily="sans-serif-medium"
+        android:textColor="@color/selector_time_slot_text"
+        android:textSize="@dimen/date_slot_number_text_size"
+        tools:text="19" />
+
+    <TextView
+        android:id="@+id/date_month"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:textColor="@color/selector_time_slot_text"
+        android:textSize="@dimen/category_description_text_size"
+        tools:text="Sep" />
+
+</LinearLayout>

@@ -1,3 +1,290 @@
 <resources>
     <string name="app_name">Arwe Developers</string>
+
+    <string name="splash_app_name">Global Services</string>
+    <string name="splash_tagline">Service at Your Doorstep</string>
+
+    <string name="cd_back">Back</string>
+    <string name="login_title">Welcome Back</string>
+    <string name="login_subtitle">Login to your account</string>
+    <string name="login_hint_identifier">Email Address</string>
+    <string name="login_hint_password">Password</string>
+    <string name="login_hint_mobile">Mobile Number</string>
+    <string name="login_send_otp_button">Send OTP</string>
+    <string name="login_forgot_password">Forgot Password?</string>
+    <string name="login_button">Login</string>
+    <string name="login_or">OR</string>
+    <string name="login_google_button">Continue with Google</string>
+    <string name="login_no_account">Don\'t have an account?</string>
+    <string name="login_register">Register</string>
+    <string name="login_error_identifier_required">Email address is required</string>
+    <string name="login_error_identifier_invalid">Enter a valid email address</string>
+    <string name="login_error_password_required">Password is required</string>
+    <string name="login_error_mobile_required">Mobile number is required</string>
+    <string name="login_error_mobile_invalid">Enter a valid mobile number</string>
+    <string name="login_forgot_password_placeholder">Forgot password is coming soon</string>
+    <string name="login_google_placeholder">Google sign-in is coming soon</string>
+
+    <string name="login_error_validation_generic">Please check the details you entered and try again</string>
+    <string name="login_error_too_many_attempts">Too many attempts. Please try again later</string>
+    <string name="login_error_server">Something went wrong on our end. Please try again later</string>
+    <string name="login_error_network_unavailable">No internet connection. Please check your network and try again</string>
+    <string name="login_error_timeout">The request timed out. Please try again</string>
+    <string name="login_error_generic">Login failed. Please try again</string>
+    <string name="cd_login_progress">Signing in</string>
+    <string name="cd_send_otp_progress">Sending OTP</string>
+
+    <string name="otp_verification_title">Verify OTP</string>
+    <string name="otp_verification_subtitle">Enter the code sent to your mobile number</string>
+    <string name="otp_verification_mobile_label">Mobile Number</string>
+    <string name="otp_verification_hint_otp">Enter OTP</string>
+    <string name="otp_verification_button">Verify</string>
+    <string name="otp_verification_not_connected">OTP verification will be connected next.</string>
+    <string name="cd_otp_verification_progress">Verifying OTP</string>
+    <string name="otp_verification_error_required">Enter the OTP sent to your mobile number</string>
+    <string name="otp_verification_error_validation_generic">Please check the code you entered and try again</string>
+    <string name="otp_verification_error_too_many_attempts">Too many attempts. Please try again later</string>
+    <string name="otp_verification_error_server">Something went wrong on our end. Please try again later</string>
+    <string name="otp_verification_error_network_unavailable">No internet connection. Please check your network and try again</string>
+    <string name="otp_verification_error_timeout">The request timed out. Please try again</string>
+    <string name="otp_verification_error_generic">Could not verify the OTP. Please try again</string>
+
+    <string name="otp_registration_title">Create Account</string>
+    <string name="otp_registration_subtitle">Just a few details to get you started</string>
+    <string name="otp_registration_hint_name">Full Name</string>
+    <string name="otp_registration_hint_email">Email Address (Optional)</string>
+    <string name="otp_registration_mobile_label">Mobile Number</string>
+    <string name="otp_registration_button">Create Account</string>
+    <string name="otp_registration_not_connected">Registration API will be connected next.</string>
+    <string name="otp_registration_error_name_required">Full name is required</string>
+    <string name="otp_registration_error_name_too_long">Full name is too long</string>
+    <string name="otp_registration_error_email_invalid">Enter a valid email address</string>
+    <string name="otp_registration_error_email_too_long">Email address is too long</string>
+    <string name="otp_registration_error_missing_context">Something went wrong. Please verify your mobile number again.</string>
+    <string name="otp_registration_error_validation_generic">Please check the details you entered and try again</string>
+    <string name="otp_registration_error_too_many_attempts">Too many attempts. Please try again later</string>
+    <string name="otp_registration_error_server">Something went wrong on our end. Please try again later</string>
+    <string name="otp_registration_error_network_unavailable">No internet connection. Please check your network and try again</string>
+    <string name="otp_registration_error_timeout">The request timed out. Please try again</string>
+    <string name="otp_registration_error_generic">Could not create your account. Please try again</string>
+    <string name="cd_otp_registration_progress">Creating account</string>
+
+    <string name="register_title">Create Account</string>
+    <string name="register_subtitle">Register to get service at your doorstep</string>
+    <string name="register_hint_full_name">Full Name</string>
+    <string name="register_hint_mobile">Mobile Number</string>
+    <string name="register_hint_alternate_mobile">Alternate Mobile Number (Optional)</string>
+    <string name="register_hint_email">Email Address</string>
+    <string name="register_hint_password">Password</string>
+    <string name="register_hint_confirm_password">Confirm Password</string>
+    <string name="register_button">Create Account</string>
+    <string name="register_already_account">Already have an account?</string>
+
+    <string name="register_error_full_name_required">Full name is required</string>
+    <string name="register_error_full_name_too_long">Full name must be 255 characters or fewer</string>
+    <string name="register_error_mobile_required">Mobile number is required</string>
+    <string name="register_error_mobile_invalid">Enter a valid mobile number</string>
+    <string name="register_error_mobile_too_long">Mobile number must be 20 characters or fewer</string>
+    <string name="register_error_alternate_mobile_invalid">Enter a valid alternate mobile number</string>
+    <string name="register_error_alternate_mobile_too_long">Alternate mobile number must be 20 characters or fewer</string>
+    <string name="register_error_email_required">Email address is required</string>
+    <string name="register_error_email_invalid">Enter a valid email address</string>
+    <string name="register_error_email_too_long">Email must be 255 characters or fewer</string>
+    <string name="register_error_password_required">Password is required</string>
+    <string name="register_error_password_too_short">Password must be at least 8 characters</string>
+    <string name="register_error_confirm_password_required">Please confirm your password</string>
+    <string name="register_error_confirm_password_mismatch">Passwords do not match</string>
+
+    <string name="register_success_message">Account created successfully</string>
+    <string name="register_error_validation_generic">Please check the details you entered and try again</string>
+    <string name="register_error_too_many_attempts">Too many attempts. Please try again later</string>
+    <string name="register_error_server">Something went wrong on our end. Please try again later</string>
+    <string name="register_error_network_unavailable">No internet connection. Please check your network and try again</string>
+    <string name="register_error_timeout">The request timed out. Please try again</string>
+    <string name="register_error_generic">Registration failed. Please try again</string>
+    <string name="cd_register_progress">Creating your account</string>
+
+    <string name="cd_full_name_icon">Full name icon</string>
+    <string name="cd_mobile_icon">Mobile number icon</string>
+    <string name="cd_alternate_mobile_icon">Alternate mobile number icon</string>
+    <string name="cd_email_icon">Email icon</string>
+    <string name="cd_password_icon">Password icon</string>
+
+    <string name="home_greeting_fallback">Welcome</string>
+    <string name="home_greeting_named">Hi, %1$s</string>
+    <string name="home_welcome_title">Welcome back!</string>
+    <string name="home_welcome_subtitle">How can we help you today?</string>
+    <string name="home_banner_title">Reliable Service\nat Your Doorstep</string>
+    <string name="home_banner_subtitle">Home Appliances\nBattery Service &amp; More</string>
+    <string name="home_quick_services_title">Quick Services</string>
+    <string name="home_notifications_placeholder">Notifications are coming soon</string>
+
+    <string name="quick_service_book">Book a Service</string>
+    <string name="quick_service_my_services">My Services</string>
+    <string name="quick_service_active">Active Service</string>
+    <string name="quick_service_history">Service History</string>
+
+    <string name="nav_home">Home</string>
+    <string name="nav_support">Support</string>
+    <string name="nav_profile">Profile</string>
+
+    <string name="cd_notification_bell">Notifications</string>
+    <string name="cd_banner_illustration">Service illustration</string>
+
+    <string name="placeholder_message">This screen is coming soon.</string>
+
+    <string name="service_category_header_title">Book a Service</string>
+    <string name="service_category_header_subtitle">Select a service category</string>
+    <string name="service_category_section_title">What service do you need?</string>
+    <string name="service_category_continue">Continue</string>
+
+    <string name="category_battery_title">Battery Service</string>
+    <string name="category_battery_description">Car, Bike, UPS and other battery services</string>
+    <string name="category_home_appliance_title">Home Appliance Service</string>
+    <string name="category_home_appliance_description">Washing machine, fridge, AC and more</string>
+    <string name="category_electrical_title">Electrical Service</string>
+    <string name="category_electrical_description">Wiring, switches and electrical repairs</string>
+    <string name="category_plumbing_title">Plumbing Service</string>
+    <string name="category_plumbing_description">Leakage, pipeline and plumbing repairs</string>
+    <string name="category_other_title">Other Services</string>
+    <string name="category_other_description">Anything else you need help with</string>
+
+    <string name="product_selection_header_title">Select Product</string>
+    <string name="product_selection_header_subtitle">Choose the product you need service for</string>
+    <string name="product_selection_section_title">Available Products</string>
+
+    <string name="product_car_battery_title">Car Battery</string>
+    <string name="product_car_battery_description">Car battery service and support</string>
+    <string name="product_bike_battery_title">Bike Battery</string>
+    <string name="product_bike_battery_description">Bike battery service and support</string>
+    <string name="product_ups_battery_title">UPS Battery</string>
+    <string name="product_ups_battery_description">UPS battery service and support</string>
+    <string name="product_other_battery_title">Other Battery</string>
+    <string name="product_other_battery_description">Other battery service and support</string>
+
+    <string name="product_list_error_unauthorized">Your session has expired. Please log in again.</string>
+    <string name="product_list_error_generic">Could not load products. Please try again.</string>
+    <string name="cd_product_list_progress">Loading products</string>
+
+    <string name="product_washing_machine_title">Washing Machine</string>
+    <string name="product_washing_machine_description">Washing machine repair and service</string>
+    <string name="product_refrigerator_title">Refrigerator</string>
+    <string name="product_refrigerator_description">Refrigerator repair and service</string>
+    <string name="product_air_conditioner_title">Air Conditioner</string>
+    <string name="product_air_conditioner_description">AC repair and service</string>
+    <string name="product_other_appliance_title">Other Appliance</string>
+    <string name="product_other_appliance_description">Other home appliance service</string>
+
+    <string name="product_wiring_title">Wiring</string>
+    <string name="product_wiring_description">Electrical wiring repair and service</string>
+    <string name="product_switchboard_title">Switchboard</string>
+    <string name="product_switchboard_description">Switchboard repair and installation</string>
+    <string name="product_other_electrical_title">Other Electrical</string>
+    <string name="product_other_electrical_description">Other electrical service</string>
+
+    <string name="product_pipe_leakage_title">Pipe Leakage</string>
+    <string name="product_pipe_leakage_description">Pipe leakage repair and service</string>
+    <string name="product_tap_fitting_title">Tap Fitting</string>
+    <string name="product_tap_fitting_description">Tap and fitting repair or installation</string>
+    <string name="product_other_plumbing_title">Other Plumbing</string>
+    <string name="product_other_plumbing_description">Other plumbing service</string>
+
+    <string name="product_general_service_title">General Service</string>
+    <string name="product_general_service_description">Any other service you need help with</string>
+
+    <string name="problem_selection_header_title">Select Problem</string>
+    <string name="problem_selection_header_subtitle">What problem are you facing?</string>
+    <string name="problem_selection_section_title">Common Problems</string>
+
+    <string name="problem_not_charging_title">Not Charging</string>
+    <string name="problem_not_charging_description">Battery is not charging properly</string>
+    <string name="problem_low_backup_title">Low Backup</string>
+    <string name="problem_low_backup_description">Battery backup is lower than expected</string>
+    <string name="problem_dead_battery_title">Dead Battery</string>
+    <string name="problem_dead_battery_description">Battery is completely dead or not working</string>
+    <string name="problem_regeneration_required_title">Regeneration Required</string>
+    <string name="problem_regeneration_required_description">Battery may require regeneration/service</string>
+    <string name="problem_other_title">Other</string>
+    <string name="problem_other_description">Other battery-related problem</string>
+
+    <string name="problem_generic_not_working_title">Not Working</string>
+    <string name="problem_generic_not_working_description">The product is not working properly</string>
+    <string name="problem_generic_other_title">Other</string>
+    <string name="problem_generic_other_description">Other problem with this product</string>
+
+    <string name="address_selection_header_title">Select Address</string>
+    <string name="address_selection_header_subtitle">Where should we provide the service?</string>
+    <string name="address_selection_section_title">Saved Addresses</string>
+    <string name="address_selection_next">Next</string>
+    <string name="address_add_new">Add New Address</string>
+    <string name="address_line_format">%1$s, %2$s - %3$s</string>
+    <string name="cd_add_address_icon">Add new address</string>
+    <string name="cd_address_list_progress">Loading addresses</string>
+    <string name="address_list_empty_title">No saved addresses yet</string>
+    <string name="address_list_empty_subtitle">Add a new address to continue</string>
+    <string name="address_list_error_unauthorized">Your session has expired. Please log in again.</string>
+    <string name="address_list_error_generic">Could not load your addresses. Please try again.</string>
+
+    <string name="add_address_title">Add New Address</string>
+    <string name="add_address_subtitle">Enter the address where you need the service</string>
+    <string name="add_address_hint_type">Address Label (e.g. Home, Office)</string>
+    <string name="add_address_hint_line1">Address Line 1</string>
+    <string name="add_address_hint_line2">Address Line 2 (Optional)</string>
+    <string name="add_address_hint_landmark">Landmark (Optional)</string>
+    <string name="add_address_hint_city">City</string>
+    <string name="add_address_hint_state">State</string>
+    <string name="add_address_hint_postal_code">Postal Code</string>
+    <string name="add_address_save_button">Save Address</string>
+    <string name="cd_add_address_progress">Saving address</string>
+    <string name="cd_address_line_icon">Address icon</string>
+
+    <string name="add_address_error_type_required">Address label is required</string>
+    <string name="add_address_error_line1_required">Address line 1 is required</string>
+    <string name="add_address_error_city_required">City is required</string>
+    <string name="add_address_error_state_required">State is required</string>
+    <string name="add_address_error_postal_code_required">Postal code is required</string>
+    <string name="add_address_error_too_long">This field is too long</string>
+    <string name="add_address_error_validation_generic">Please check the details you entered and try again</string>
+    <string name="add_address_error_too_many_attempts">Too many attempts. Please try again later</string>
+    <string name="add_address_error_server">Something went wrong on our end. Please try again later</string>
+    <string name="add_address_error_network_unavailable">No internet connection. Please check your network and try again</string>
+    <string name="add_address_error_timeout">The request timed out. Please try again</string>
+    <string name="add_address_error_unauthorized">Your session has expired. Please log in again.</string>
+    <string name="add_address_error_generic">Could not save the address. Please try again.</string>
+
+    <string name="date_time_selection_header_title">Book a Service</string>
+    <string name="date_time_selection_header_subtitle">Choose when you need the service</string>
+    <string name="date_time_selection_content_title">Select Date &amp; Time</string>
+    <string name="date_time_selection_date_section_title">Select Date</string>
+    <string name="date_time_selection_time_section_title">Select Time</string>
+    <string name="cd_month_previous">Previous month</string>
+    <string name="cd_month_next">Next month</string>
+    <string name="calendar_weekday_sun">Sun</string>
+    <string name="calendar_weekday_mon">Mon</string>
+    <string name="calendar_weekday_tue">Tue</string>
+    <string name="calendar_weekday_wed">Wed</string>
+    <string name="calendar_weekday_thu">Thu</string>
+    <string name="calendar_weekday_fri">Fri</string>
+    <string name="calendar_weekday_sat">Sat</string>
+
+    <string name="confirm_booking_title">Confirm Booking</string>
+    <string name="confirm_booking_subtitle">Review your service details</string>
+    <string name="confirm_booking_section_category">Service Category</string>
+    <string name="confirm_booking_section_product">Product</string>
+    <string name="confirm_booking_section_problem">Problem</string>
+    <string name="confirm_booking_section_address">Service Address</string>
+    <string name="confirm_booking_section_date">Date</string>
+    <string name="confirm_booking_section_time">Time</string>
+    <string name="confirm_booking_api_not_available">Booking API will be available once backend integration is added</string>
+    <string name="confirm_booking_success">Booking confirmed! Our team will contact you shortly.</string>
+    <string name="confirm_booking_error_unsupported_category">Booking for this category isn\'t available yet. Please contact support.</string>
+    <string name="confirm_booking_error_missing_address">Something went wrong. Please select your address again.</string>
+    <string name="confirm_booking_error_validation_generic">Please check your booking details and try again</string>
+    <string name="confirm_booking_error_too_many_attempts">Too many attempts. Please try again later</string>
+    <string name="confirm_booking_error_server">Something went wrong on our end. Please try again later</string>
+    <string name="confirm_booking_error_network_unavailable">No internet connection. Please check your network and try again</string>
+    <string name="confirm_booking_error_timeout">The request timed out. Please try again</string>
+    <string name="confirm_booking_error_unauthorized">Your session has expired. Please log in again.</string>
+    <string name="confirm_booking_error_generic">Could not confirm your booking. Please try again</string>
+    <string name="cd_confirm_booking_progress">Confirming booking</string>
 </resources>

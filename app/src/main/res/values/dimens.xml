@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="splash_logo_size">120dp</dimen>
+    <dimen name="splash_title_margin_top">16dp</dimen>
+    <dimen name="splash_title_text_size">22sp</dimen>
+    <dimen name="splash_subtitle_margin_top">6dp</dimen>
+    <dimen name="splash_subtitle_text_size">14sp</dimen>
+    <dimen name="splash_bottom_accent_height">180dp</dimen>
+    <dimen name="splash_bottom_accent_corner_radius">120dp</dimen>
+    <dimen name="splash_progress_size">28dp</dimen>
+    <dimen name="splash_progress_margin_bottom">40dp</dimen>
+
+    <dimen name="login_header_height">220dp</dimen>
+    <dimen name="login_header_logo_size">64dp</dimen>
+    <dimen name="login_back_button_size">40dp</dimen>
+    <dimen name="login_card_top_offset">160dp</dimen>
+    <dimen name="login_card_corner_radius">28dp</dimen>
+    <dimen name="login_card_content_padding_top">28dp</dimen>
+    <dimen name="login_content_horizontal_margin">24dp</dimen>
+    <dimen name="login_title_text_size">24sp</dimen>
+    <dimen name="login_subtitle_text_size">14sp</dimen>
+    <dimen name="login_input_margin_top">16dp</dimen>
+    <dimen name="login_input_corner_radius">12dp</dimen>
+    <dimen name="login_button_height">52dp</dimen>
+    <dimen name="login_button_corner_radius">12dp</dimen>
+    <dimen name="login_divider_margin_vertical">24dp</dimen>
+    <dimen name="login_google_button_height">52dp</dimen>
+
+    <dimen name="home_header_vertical_padding">16dp</dimen>
+    <dimen name="home_logo_size">28dp</dimen>
+    <dimen name="home_icon_size">24dp</dimen>
+    <dimen name="home_icon_touch_size">40dp</dimen>
+    <dimen name="home_notification_dot_size">8dp</dimen>
+    <dimen name="home_greeting_margin_top">12dp</dimen>
+    <dimen name="home_section_spacing">24dp</dimen>
+    <dimen name="home_banner_corner_radius">20dp</dimen>
+    <dimen name="home_banner_padding">20dp</dimen>
+    <dimen name="home_banner_min_height">150dp</dimen>
+    <dimen name="home_illustration_size">72dp</dimen>
+    <dimen name="home_carousel_dot_size">6dp</dimen>
+    <dimen name="home_carousel_dot_size_active">8dp</dimen>
+    <dimen name="home_carousel_dot_spacing">4dp</dimen>
+    <dimen name="home_quick_card_spacing">12dp</dimen>
+    <dimen name="home_quick_card_corner_radius">16dp</dimen>
+    <dimen name="home_quick_card_min_height">110dp</dimen>
+    <dimen name="home_quick_card_icon_size">32dp</dimen>
+
+    <dimen name="category_card_padding">16dp</dimen>
+    <dimen name="category_text_margin_start">16dp</dimen>
+    <dimen name="category_description_text_size">12sp</dimen>
+    <dimen name="category_card_border_width">1dp</dimen>
+    <dimen name="category_card_border_width_selected">2dp</dimen>
+
+    <dimen name="date_slot_width">64dp</dimen>
+    <dimen name="date_slot_number_text_size">18sp</dimen>
+    <dimen name="time_slot_min_height">44dp</dimen>
+
+    <dimen name="calendar_day_bubble_size">34dp</dimen>
+    <dimen name="calendar_day_text_size">13sp</dimen>
+    <dimen name="calendar_month_nav_button_size">32dp</dimen>
+</resources>

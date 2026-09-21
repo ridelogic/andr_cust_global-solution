@@ -1,0 +1,391 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".ui.home.HomeActivity">
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/content_scroll"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toTopOf="@id/bottom_navigation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/home_section_spacing">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/header_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/login_header_navy"
+                android:paddingHorizontal="@dimen/login_content_horizontal_margin"
+                android:paddingTop="@dimen/home_header_vertical_padding"
+                android:paddingBottom="@dimen/home_header_vertical_padding">
+
+                <ImageView
+                    android:id="@+id/home_logo"
+                    android:layout_width="@dimen/home_logo_size"
+                    android:layout_height="@dimen/home_logo_size"
+                    android:contentDescription="@string/splash_app_name"
+                    android:src="@drawable/ic_global_services_logo"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/home_app_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="@string/splash_app_name"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/login_subtitle_text_size"
+                    app:layout_constraintBottom_toBottomOf="@id/home_logo"
+                    app:layout_constraintStart_toEndOf="@id/home_logo"
+                    app:layout_constraintTop_toTopOf="@id/home_logo" />
+
+                <FrameLayout
+                    android:id="@+id/notification_bell"
+                    android:layout_width="@dimen/home_icon_touch_size"
+                    android:layout_height="@dimen/home_icon_touch_size"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:clickable="true"
+                    android:contentDescription="@string/cd_notification_bell"
+                    android:focusable="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:layout_width="@dimen/home_icon_size"
+                        android:layout_height="@dimen/home_icon_size"
+                        android:layout_gravity="center"
+                        android:importantForAccessibility="no"
+                        android:src="@drawable/ic_notification"
+                        app:tint="@color/white" />
+
+                    <View
+                        android:layout_width="@dimen/home_notification_dot_size"
+                        android:layout_height="@dimen/home_notification_dot_size"
+                        android:layout_gravity="top|end"
+                        android:layout_marginTop="6dp"
+                        android:layout_marginEnd="6dp"
+                        android:background="@drawable/bg_notification_dot" />
+
+                </FrameLayout>
+
+                <TextView
+                    android:id="@+id/greeting_text"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/home_greeting_margin_top"
+                    android:ellipsize="end"
+                    android:fontFamily="sans-serif-medium"
+                    android:maxLines="1"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/login_title_text_size"
+                    app:layout_constraintEnd_toStartOf="@id/notification_bell"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/home_logo"
+                    tools:text="Welcome" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingHorizontal="@dimen/login_content_horizontal_margin"
+                android:paddingTop="@dimen/home_section_spacing">
+
+                <TextView
+                    android:id="@+id/welcome_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="@string/home_welcome_title"
+                    android:textColor="@color/text_primary"
+                    android:textSize="@dimen/login_title_text_size" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="@string/home_welcome_subtitle"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="@dimen/login_subtitle_text_size" />
+
+            </LinearLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/login_content_horizontal_margin"
+                android:layout_marginTop="@dimen/home_section_spacing"
+                android:background="@drawable/bg_service_banner"
+                android:minHeight="@dimen/home_banner_min_height"
+                android:padding="@dimen/home_banner_padding">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top|start"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-medium"
+                        android:lineSpacingExtra="2dp"
+                        android:text="@string/home_banner_title"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/login_title_text_size" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="@string/home_banner_subtitle"
+                        android:textColor="@color/banner_subtitle_text"
+                        android:textSize="@dimen/login_subtitle_text_size" />
+
+                </LinearLayout>
+
+                <FrameLayout
+                    android:layout_width="@dimen/home_illustration_size"
+                    android:layout_height="@dimen/home_illustration_size"
+                    android:layout_gravity="end|center_vertical"
+                    android:background="@drawable/bg_illustration_placeholder"
+                    android:contentDescription="@string/cd_banner_illustration">
+
+                    <ImageView
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:layout_gravity="center"
+                        android:importantForAccessibility="no"
+                        android:src="@drawable/ic_book_service"
+                        app:tint="@color/white" />
+
+                </FrameLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|center_horizontal"
+                    android:orientation="horizontal">
+
+                    <View
+                        android:layout_width="@dimen/home_carousel_dot_size_active"
+                        android:layout_height="@dimen/home_carousel_dot_size_active"
+                        android:background="@drawable/bg_carousel_dot_active" />
+
+                    <View
+                        android:layout_width="@dimen/home_carousel_dot_size"
+                        android:layout_height="@dimen/home_carousel_dot_size"
+                        android:layout_marginStart="@dimen/home_carousel_dot_spacing"
+                        android:background="@drawable/bg_carousel_dot" />
+
+                    <View
+                        android:layout_width="@dimen/home_carousel_dot_size"
+                        android:layout_height="@dimen/home_carousel_dot_size"
+                        android:layout_marginStart="@dimen/home_carousel_dot_spacing"
+                        android:background="@drawable/bg_carousel_dot" />
+
+                </LinearLayout>
+
+            </FrameLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/login_content_horizontal_margin"
+                android:layout_marginTop="@dimen/home_section_spacing"
+                android:fontFamily="sans-serif-medium"
+                android:text="@string/home_quick_services_title"
+                android:textColor="@color/text_primary"
+                android:textSize="@dimen/login_subtitle_text_size" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/login_content_horizontal_margin"
+                android:layout_marginTop="12dp"
+                android:baselineAligned="false"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/card_book_service"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="@dimen/home_quick_card_spacing"
+                    android:background="@drawable/bg_quick_service_card"
+                    android:clickable="true"
+                    android:contentDescription="@string/quick_service_book"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:gravity="center"
+                    android:minHeight="@dimen/home_quick_card_min_height"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <ImageView
+                        android:layout_width="@dimen/home_quick_card_icon_size"
+                        android:layout_height="@dimen/home_quick_card_icon_size"
+                        android:importantForAccessibility="no"
+                        android:src="@drawable/ic_book_service"
+                        app:tint="@color/primary_blue" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:gravity="center"
+                        android:text="@string/quick_service_book"
+                        android:textColor="@color/text_primary"
+                        android:textSize="@dimen/login_subtitle_text_size" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/card_my_services"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="@dimen/home_quick_card_spacing"
+                    android:background="@drawable/bg_quick_service_card"
+                    android:clickable="true"
+                    android:contentDescription="@string/quick_service_my_services"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:gravity="center"
+                    android:minHeight="@dimen/home_quick_card_min_height"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <ImageView
+                        android:layout_width="@dimen/home_quick_card_icon_size"
+                        android:layout_height="@dimen/home_quick_card_icon_size"
+                        android:importantForAccessibility="no"
+                        android:src="@drawable/ic_my_services"
+                        app:tint="@color/primary_blue" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:gravity="center"
+                        android:text="@string/quick_service_my_services"
+                        android:textColor="@color/text_primary"
+                        android:textSize="@dimen/login_subtitle_text_size" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/login_content_horizontal_margin"
+                android:layout_marginTop="@dimen/home_quick_card_spacing"
+                android:baselineAligned="false"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/card_active_service"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="@dimen/home_quick_card_spacing"
+                    android:background="@drawable/bg_quick_service_card"
+                    android:clickable="true"
+                    android:contentDescription="@string/quick_service_active"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:gravity="center"
+                    android:minHeight="@dimen/home_quick_card_min_height"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <ImageView
+                        android:layout_width="@dimen/home_quick_card_icon_size"
+                        android:layout_height="@dimen/home_quick_card_icon_size"
+                        android:importantForAccessibility="no"
+                        android:src="@drawable/ic_active_service"
+                        app:tint="@color/primary_blue" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:gravity="center"
+                        android:text="@string/quick_service_active"
+                        android:textColor="@color/text_primary"
+                        android:textSize="@dimen/login_subtitle_text_size" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/card_service_history"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="@dimen/home_quick_card_spacing"
+                    android:background="@drawable/bg_quick_service_card"
+                    android:clickable="true"
+                    android:contentDescription="@string/quick_service_history"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:gravity="center"
+                    android:minHeight="@dimen/home_quick_card_min_height"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <ImageView
+                        android:layout_width="@dimen/home_quick_card_icon_size"
+                        android:layout_height="@dimen/home_quick_card_icon_size"
+                        android:importantForAccessibility="no"
+                        android:src="@drawable/ic_service_history"
+                        app:tint="@color/primary_blue" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:gravity="center"
+                        android:text="@string/quick_service_history"
+                        android:textColor="@color/text_primary"
+                        android:textSize="@dimen/login_subtitle_text_size" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:elevation="8dp"
+        app:itemIconTint="@color/bottom_nav_item_color"
+        app:itemTextColor="@color/bottom_nav_item_color"
+        app:labelVisibilityMode="labeled"
+        app:menu="@menu/menu_bottom_nav_home"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

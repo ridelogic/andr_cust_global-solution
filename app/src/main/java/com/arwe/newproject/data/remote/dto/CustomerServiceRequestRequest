@@ -1,0 +1,22 @@
+package com.arwe.newproject.data.remote.dto
+
+import com.google.gson.annotations.SerializedName
+
+data class CustomerServiceRequestRequest(
+    @SerializedName("service_type_id")
+    val serviceTypeId: Long,
+
+    @SerializedName("customer_address_id")
+    val customerAddressId: Long,
+
+    val complaint: String,
+
+    @SerializedName("preferred_date")
+    val preferredDate: String?,
+
+    @SerializedName("preferred_time_from")
+    val preferredTimeFrom: String?,
+
+    @SerializedName("preferred_time_to")
+    val preferredTimeTo: String?
+)
