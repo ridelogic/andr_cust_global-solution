@@ -21,16 +21,27 @@ class ServiceTypeMappingTest {
     }
 
     @Test
-    fun `no non-BATTERY category has a safe mapping, regardless of the selected problem`() {
-        val nonBatteryCategories = ServiceCategory.values().filter { it != ServiceCategory.BATTERY }
+    fun `Home Appliance Not Working maps to the confirmed REPAIR service_type_id`() {
+        val notWorking = ProblemCatalog.problemsFor(ServiceCategory.HOME_APPLIANCE, dummyProduct)
+            .first { it.id == "not_working" }
 
-        nonBatteryCategories.forEach { category ->
-            ProblemCatalog.problemsFor(category, dummyProduct).forEach { problem ->
-                assertNull(
-                    "category=$category problem=${problem.id} must not have a guessed service_type_id",
-                    serviceTypeIdFor(category, problem)
-                )
-            }
+        assertEquals(3L, serviceTypeIdFor(ServiceCategory.HOME_APPLIANCE, notWorking))
+    }
+
+    @Test
+    fun `every other non-BATTERY category-problem combination still has no safe mapping`() {
+        val unconfirmedCombinations = ServiceCategory.values().flatMap { category ->
+            ProblemCatalog.problemsFor(category, dummyProduct).map { problem -> category to problem }
+        }.filterNot { (category, problem) ->
+            category == ServiceCategory.BATTERY ||
+                (category == ServiceCategory.HOME_APPLIANCE && problem.id == "not_working")
+        }
+
+        unconfirmedCombinations.forEach { (category, problem) ->
+            assertNull(
+                "category=$category problem=${problem.id} must not have a guessed service_type_id",
+                serviceTypeIdFor(category, problem)
+            )
         }
     }
 

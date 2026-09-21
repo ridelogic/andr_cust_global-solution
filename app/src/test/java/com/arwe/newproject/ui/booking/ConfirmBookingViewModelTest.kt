@@ -91,17 +91,61 @@ class ConfirmBookingViewModelTest {
     }
 
     @Test
-    fun `a non-BATTERY category never calls the repository and reports UnsupportedCategory`() {
+    fun `a category with no confirmed mapping never calls the repository and reports UnsupportedCategory`() {
         val fakeRepository = FakeRepository()
         val viewModel = ConfirmBookingViewModel(Application(), fakeRepository)
-        val problem = ProblemCatalog.problemsFor(ServiceCategory.HOME_APPLIANCE, dummyProduct).first()
+        val problem = ProblemCatalog.problemsFor(ServiceCategory.ELECTRICAL, dummyProduct).first()
 
         viewModel.confirmBooking(
-            category = ServiceCategory.HOME_APPLIANCE,
+            category = ServiceCategory.ELECTRICAL,
             problem = problem,
             customerAddressId = 42L,
             preferredDate = "2026-09-25",
             preferredTimeFrom = "09:00"
+        )
+
+        assertFalse(fakeRepository.createServiceRequestCalled)
+        assertEquals(ConfirmBookingUiState.UnsupportedCategory, viewModel.uiState.value)
+    }
+
+    @Test
+    fun `Home Appliance Not Working with a valid address transitions Idle to Loading then Success, using service_type_id 3`() = runTest {
+        val fakeRepository = FakeRepository()
+        val viewModel = ConfirmBookingViewModel(Application(), fakeRepository)
+        val notWorking = ProblemCatalog.problemsFor(ServiceCategory.HOME_APPLIANCE, dummyProduct)
+            .first { it.id == "not_working" }
+
+        viewModel.confirmBooking(
+            category = ServiceCategory.HOME_APPLIANCE,
+            problem = notWorking,
+            customerAddressId = 42L,
+            preferredDate = "2026-09-25",
+            preferredTimeFrom = "09:00"
+        )
+        assertEquals(ConfirmBookingUiState.Loading, viewModel.uiState.value)
+        assertEquals(3L, fakeRepository.capturedServiceTypeId)
+        assertEquals("Not Working", fakeRepository.capturedComplaint)
+
+        val response = CustomerServiceRequestResponse(202, "TCK-0202")
+        fakeRepository.createServiceRequestDeferred.complete(ServiceRequestResult.Success(response))
+        advanceUntilIdle()
+
+        assertEquals(ConfirmBookingUiState.Success(response), viewModel.uiState.value)
+    }
+
+    @Test
+    fun `Home Appliance Other still has no confirmed mapping and reports UnsupportedCategory`() {
+        val fakeRepository = FakeRepository()
+        val viewModel = ConfirmBookingViewModel(Application(), fakeRepository)
+        val other = ProblemCatalog.problemsFor(ServiceCategory.HOME_APPLIANCE, dummyProduct)
+            .first { it.id == "other" }
+
+        viewModel.confirmBooking(
+            category = ServiceCategory.HOME_APPLIANCE,
+            problem = other,
+            customerAddressId = 42L,
+            preferredDate = null,
+            preferredTimeFrom = null
         )
 
         assertFalse(fakeRepository.createServiceRequestCalled)
