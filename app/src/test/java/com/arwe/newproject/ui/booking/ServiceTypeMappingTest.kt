@@ -29,12 +29,20 @@ class ServiceTypeMappingTest {
     }
 
     @Test
-    fun `every other non-BATTERY category-problem combination still has no safe mapping`() {
+    fun `Home Appliance Other maps to the shared generic catch-all OTHER service_type_id`() {
+        val other = ProblemCatalog.problemsFor(ServiceCategory.HOME_APPLIANCE, dummyProduct)
+            .first { it.id == "other" }
+
+        assertEquals(11L, serviceTypeIdFor(ServiceCategory.HOME_APPLIANCE, other))
+    }
+
+    @Test
+    fun `every category-problem combination across the app's two supported categories matches the confirmed mappings`() {
         val unconfirmedCombinations = ServiceCategory.values().flatMap { category ->
             ProblemCatalog.problemsFor(category, dummyProduct).map { problem -> category to problem }
         }.filterNot { (category, problem) ->
             category == ServiceCategory.BATTERY ||
-                (category == ServiceCategory.HOME_APPLIANCE && problem.id == "not_working")
+                (category == ServiceCategory.HOME_APPLIANCE && (problem.id == "not_working" || problem.id == "other"))
         }
 
         unconfirmedCombinations.forEach { (category, problem) ->

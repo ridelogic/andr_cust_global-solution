@@ -20,9 +20,6 @@ class ServiceCategoryActivity : AppCompatActivity() {
 
         bindCategory(binding.categoryBattery, ServiceCategory.BATTERY)
         bindCategory(binding.categoryHomeAppliance, ServiceCategory.HOME_APPLIANCE)
-        bindCategory(binding.categoryElectrical, ServiceCategory.ELECTRICAL)
-        bindCategory(binding.categoryPlumbing, ServiceCategory.PLUMBING)
-        bindCategory(binding.categoryOther, ServiceCategory.OTHER)
 
         binding.continueButton.setOnClickListener {
             val category = selectedCategory ?: return@setOnClickListener
@@ -48,9 +45,6 @@ class ServiceCategoryActivity : AppCompatActivity() {
     private fun updateSelectionState() {
         binding.categoryBattery.root.isSelected = selectedCategory == ServiceCategory.BATTERY
         binding.categoryHomeAppliance.root.isSelected = selectedCategory == ServiceCategory.HOME_APPLIANCE
-        binding.categoryElectrical.root.isSelected = selectedCategory == ServiceCategory.ELECTRICAL
-        binding.categoryPlumbing.root.isSelected = selectedCategory == ServiceCategory.PLUMBING
-        binding.categoryOther.root.isSelected = selectedCategory == ServiceCategory.OTHER
         binding.continueButton.isEnabled = selectedCategory != null
     }
 

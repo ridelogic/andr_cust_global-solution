@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:minHeight="48dp">
+
+    <ImageView
+        android:id="@+id/timeline_dot"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_marginTop="1dp"
+        android:background="@drawable/bg_timeline_dot"
+        android:padding="3dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/white"
+        tools:ignore="ContentDescription" />
+
+    <View
+        android:id="@+id/timeline_line"
+        android:layout_width="2dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
+        android:background="@color/divider_color"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/timeline_dot"
+        app:layout_constraintStart_toStartOf="@id/timeline_dot"
+        app:layout_constraintTop_toBottomOf="@id/timeline_dot" />
+
+    <TextView
+        android:id="@+id/timeline_label"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="20dp"
+        android:fontFamily="sans-serif-medium"
+        android:textColor="@color/text_primary"
+        android:textSize="@dimen/login_subtitle_text_size"
+        app:layout_constraintBottom_toTopOf="@id/timeline_timestamp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/timeline_dot"
+        app:layout_constraintTop_toTopOf="@id/timeline_dot"
+        app:layout_constraintVertical_chainStyle="packed"
+        tools:text="Technician Assigned" />
+
+    <TextView
+        android:id="@+id/timeline_timestamp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="2dp"
+        android:textColor="@color/text_secondary"
+        android:textSize="@dimen/category_description_text_size"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/timeline_dot"
+        app:layout_constraintTop_toBottomOf="@id/timeline_label"
+        tools:text="21 Sep 2026, 10:00 AM"
+        tools:visibility="visible" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

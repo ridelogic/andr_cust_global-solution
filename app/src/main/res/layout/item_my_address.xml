@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_category_card"
+    android:padding="@dimen/category_card_padding">
+
+    <ImageView
+        android:id="@+id/address_icon"
+        android:layout_width="@dimen/home_icon_size"
+        android:layout_height="@dimen/home_icon_size"
+        android:importantForAccessibility="no"
+        android:src="@drawable/ic_location"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/primary_blue" />
+
+    <TextView
+        android:id="@+id/address_label_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/category_text_margin_start"
+        android:fontFamily="sans-serif-medium"
+        android:textColor="@color/text_primary"
+        android:textSize="@dimen/login_subtitle_text_size"
+        app:layout_constraintEnd_toStartOf="@id/default_badge"
+        app:layout_constraintStart_toEndOf="@id/address_icon"
+        app:layout_constraintTop_toTopOf="@id/address_icon"
+        tools:text="Home" />
+
+    <TextView
+        android:id="@+id/default_badge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_status_pill"
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="3dp"
+        android:text="@string/my_addresses_default_badge"
+        android:textColor="@color/primary_blue"
+        android:textSize="@dimen/category_description_text_size"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible" />
+
+    <TextView
+        android:id="@+id/address_line1_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/category_text_margin_start"
+        android:layout_marginTop="4dp"
+        android:textColor="@color/text_primary"
+        android:textSize="@dimen/category_description_text_size"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/address_icon"
+        app:layout_constraintTop_toBottomOf="@id/address_label_text"
+        tools:text="221B Baker Street" />
+
+    <TextView
+        android:id="@+id/address_line2_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/category_text_margin_start"
+        android:layout_marginTop="2dp"
+        android:textColor="@color/text_primary"
+        android:textSize="@dimen/category_description_text_size"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/address_icon"
+        app:layout_constraintTop_toBottomOf="@id/address_line1_text"
+        tools:text="Near Central Park"
+        tools:visibility="visible" />
+
+    <TextView
+        android:id="@+id/landmark_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/category_text_margin_start"
+        android:layout_marginTop="2dp"
+        android:textColor="@color/text_secondary"
+        android:textSize="@dimen/category_description_text_size"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/address_icon"
+        app:layout_constraintTop_toBottomOf="@id/address_line2_text"
+        tools:text="Landmark: Opposite Bus Stand"
+        tools:visibility="visible" />
+
+    <TextView
+        android:id="@+id/city_state_postal_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/category_text_margin_start"
+        android:layout_marginTop="2dp"
+        android:textColor="@color/text_secondary"
+        android:textSize="@dimen/category_description_text_size"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/address_icon"
+        app:layout_constraintTop_toBottomOf="@id/landmark_text"
+        tools:text="Coimbatore, Tamil Nadu - 641035" />
+
+    <View
+        android:id="@+id/actions_divider"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="12dp"
+        android:background="@color/divider_color"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/city_state_postal_text" />
+
+    <LinearLayout
+        android:id="@+id/actions_row"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/actions_divider">
+
+        <LinearLayout
+            android:id="@+id/edit_action"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackground"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="8dp">
+
+            <ImageView
+                android:layout_width="@dimen/my_address_action_icon_size"
+                android:layout_height="@dimen/my_address_action_icon_size"
+                android:importantForAccessibility="no"
+                android:src="@drawable/ic_edit"
+                app:tint="@color/primary_blue" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:text="@string/my_addresses_action_edit"
+                android:textColor="@color/primary_blue"
+                android:textSize="@dimen/category_description_text_size" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/set_default_action"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:background="?attr/selectableItemBackground"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="8dp">
+
+            <ImageView
+                android:layout_width="@dimen/my_address_action_icon_size"
+                android:layout_height="@dimen/my_address_action_icon_size"
+                android:importantForAccessibility="no"
+                android:src="@drawable/ic_radio_unchecked"
+                app:tint="@color/primary_blue" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:text="@string/my_addresses_action_set_default"
+                android:textColor="@color/primary_blue"
+                android:textSize="@dimen/category_description_text_size" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <LinearLayout
+            android:id="@+id/delete_action"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackground"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="8dp">
+
+            <ImageView
+                android:layout_width="@dimen/my_address_action_icon_size"
+                android:layout_height="@dimen/my_address_action_icon_size"
+                android:importantForAccessibility="no"
+                android:src="@drawable/ic_delete"
+                app:tint="@color/notification_dot" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:text="@string/my_addresses_action_delete"
+                android:textColor="@color/notification_dot"
+                android:textSize="@dimen/category_description_text_size" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,5 +1,6 @@
 package com.arwe.newproject.data.remote
 
+import com.arwe.newproject.data.remote.dto.CustomerAddressDeleteResponse
 import com.arwe.newproject.data.remote.dto.CustomerAddressRequest
 import com.arwe.newproject.data.remote.dto.CustomerAddressResponse
 import com.arwe.newproject.data.remote.dto.CustomerLoginRequest
@@ -8,6 +9,7 @@ import com.arwe.newproject.data.remote.dto.CustomerRegisterResponse
 import com.arwe.newproject.data.remote.dto.CustomerRegisterWithOtpRequest
 import com.arwe.newproject.data.remote.dto.CustomerSendOtpRequest
 import com.arwe.newproject.data.remote.dto.CustomerSendOtpResponse
+import com.arwe.newproject.data.remote.dto.CustomerServiceRequestDetailResponse
 import com.arwe.newproject.data.remote.dto.CustomerServiceRequestListResponse
 import com.arwe.newproject.data.remote.dto.CustomerServiceRequestRequest
 import com.arwe.newproject.data.remote.dto.CustomerServiceRequestResponse
@@ -16,8 +18,11 @@ import com.arwe.newproject.data.remote.dto.CustomerVerifyOtpResponse
 import com.arwe.newproject.data.remote.dto.ProductBatteryTypeResponse
 import retrofit2.Response
 import retrofit2.http.Body
+import retrofit2.http.DELETE
 import retrofit2.http.GET
+import retrofit2.http.PATCH
 import retrofit2.http.POST
+import retrofit2.http.Path
 
 interface CustomerAuthApiService {
 
@@ -45,6 +50,23 @@ interface CustomerAuthApiService {
     // Returns HTTP 200 (not 201 - store() sets no explicit status) with a single AddressResource.
     @POST("customer/addresses")
     suspend fun createAddress(@Body request: CustomerAddressRequest): Response<CustomerAddressResponse>
+
+    // routes/api.php: Route::patch('{address}', [AddressController::class, 'update']) - same auth
+    // as above, route-model-bound by numeric id (a nonexistent id yields Laravel's own 404; one
+    // owned by another customer yields 403 via abort_unless() - both handled by the existing
+    // classifyHttpError/ApiErrorReason pipeline). See AddressController::update()/validated() -
+    // requires the SAME full field set as store() (address_type/address_line1/city/state/
+    // postal_code/is_default), not a partial patch, and setting is_default=true there
+    // automatically un-defaults every other address server-side
+    // ($customer->addresses()->whereKeyNot($address->id)->update(['is_default' => false])).
+    @PATCH("customer/addresses/{id}")
+    suspend fun updateAddress(@Path("id") id: Long, @Body request: CustomerAddressRequest): Response<CustomerAddressResponse>
+
+    // routes/api.php: Route::delete('{address}', [AddressController::class, 'destroy']) - same
+    // auth/ownership check as update() above. Returns HTTP 200 (not 204) with a plain
+    // {"message": "..."} body, not the deleted resource - see CustomerAddressDeleteResponse's doc.
+    @DELETE("customer/addresses/{id}")
+    suspend fun deleteAddress(@Path("id") id: Long): Response<CustomerAddressDeleteResponse>
 
     // routes/api.php: Route::post('send-otp', [CustomerAuthController::class, 'sendOtp']) - public,
     // same customer prefix group as register/login, no auth:sanctum. See
@@ -92,4 +114,13 @@ interface CustomerAuthApiService {
     // ->latest(); no query params are sent (no status filter UI yet).
     @GET("customer/service-requests")
     suspend fun getServiceRequests(): Response<CustomerServiceRequestListResponse>
+
+    // routes/api.php: Route::prefix('service-requests')->... -> Route::get('{serviceRequest}',
+    // [CustomerServiceRequestController::class, 'show']) - authenticated (auth:sanctum +
+    // customer.active). See ServiceRequestController::show() - route-model-bound by numeric id;
+    // an id that doesn't exist yields 404, an id owned by another customer yields 403
+    // (abort_unless(...customer_id === $customer->id, 403)) - both handled by the existing
+    // classifyHttpError/ApiErrorReason pipeline, no special-casing needed here.
+    @GET("customer/service-requests/{id}")
+    suspend fun getServiceRequestDetail(@Path("id") id: Long): Response<CustomerServiceRequestDetailResponse>
 }

@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/booking_page_background"
+    tools:context=".ui.support.HelpSupportActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/header_container"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/login_header_navy"
+        android:paddingHorizontal="@dimen/login_content_horizontal_margin"
+        android:paddingTop="@dimen/login_content_horizontal_margin"
+        android:paddingBottom="@dimen/home_section_spacing"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/back_button"
+            android:layout_width="@dimen/login_back_button_size"
+            android:layout_height="@dimen/login_back_button_size"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/cd_back"
+            android:padding="8dp"
+            android:src="@drawable/ic_arrow_back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/white" />
+
+        <TextView
+            android:id="@+id/header_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="@string/help_support_title"
+            android:textColor="@color/white"
+            android:textSize="@dimen/login_title_text_size"
+            app:layout_constraintBottom_toBottomOf="@id/back_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/back_button"
+            app:layout_constraintTop_toTopOf="@id/back_button" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/header_container">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="@dimen/login_content_horizontal_margin"
+            android:paddingTop="@dimen/home_section_spacing"
+            android:paddingBottom="@dimen/home_section_spacing">
+
+            <!-- Contact Support -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-medium"
+                android:text="@string/help_support_section_contact"
+                android:textColor="@color/text_primary"
+                android:textSize="@dimen/login_subtitle_text_size" />
+
+            <include
+                android:id="@+id/summary_phone"
+                layout="@layout/item_summary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp" />
+
+            <include
+                android:id="@+id/summary_email"
+                layout="@layout/item_summary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/home_quick_card_spacing" />
+
+            <!-- Frequently Asked Questions -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/home_section_spacing"
+                android:fontFamily="sans-serif-medium"
+                android:text="@string/help_support_section_faq"
+                android:textColor="@color/text_primary"
+                android:textSize="@dimen/login_subtitle_text_size" />
+
+            <include
+                android:id="@+id/faq_book_service"
+                layout="@layout/item_faq_entry"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp" />
+
+            <include
+                android:id="@+id/faq_my_services"
+                layout="@layout/item_faq_entry"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/home_quick_card_spacing" />
+
+            <include
+                android:id="@+id/faq_active_service"
+                layout="@layout/item_faq_entry"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/home_quick_card_spacing" />
+
+            <include
+                android:id="@+id/faq_service_history"
+                layout="@layout/item_faq_entry"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/home_quick_card_spacing" />
+
+            <include
+                android:id="@+id/faq_manage_addresses"
+                layout="@layout/item_faq_entry"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/home_quick_card_spacing" />
+
+            <!-- Service Support -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/home_section_spacing"
+                android:fontFamily="sans-serif-medium"
+                android:text="@string/help_support_section_service"
+                android:textColor="@color/text_primary"
+                android:textSize="@dimen/login_subtitle_text_size" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/bg_category_card"
+                android:padding="@dimen/category_card_padding"
+                android:text="@string/help_support_service_message"
+                android:textColor="@color/text_primary"
+                android:textSize="@dimen/category_description_text_size" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

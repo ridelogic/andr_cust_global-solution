@@ -142,12 +142,6 @@
     <string name="category_battery_description">Car, Bike, UPS and other battery services</string>
     <string name="category_home_appliance_title">Home Appliance Service</string>
     <string name="category_home_appliance_description">Washing machine, fridge, AC and more</string>
-    <string name="category_electrical_title">Electrical Service</string>
-    <string name="category_electrical_description">Wiring, switches and electrical repairs</string>
-    <string name="category_plumbing_title">Plumbing Service</string>
-    <string name="category_plumbing_description">Leakage, pipeline and plumbing repairs</string>
-    <string name="category_other_title">Other Services</string>
-    <string name="category_other_description">Anything else you need help with</string>
 
     <string name="product_selection_header_title">Select Product</string>
     <string name="product_selection_header_subtitle">Choose the product you need service for</string>
@@ -175,22 +169,6 @@
     <string name="product_other_appliance_title">Other Appliance</string>
     <string name="product_other_appliance_description">Other home appliance service</string>
 
-    <string name="product_wiring_title">Wiring</string>
-    <string name="product_wiring_description">Electrical wiring repair and service</string>
-    <string name="product_switchboard_title">Switchboard</string>
-    <string name="product_switchboard_description">Switchboard repair and installation</string>
-    <string name="product_other_electrical_title">Other Electrical</string>
-    <string name="product_other_electrical_description">Other electrical service</string>
-
-    <string name="product_pipe_leakage_title">Pipe Leakage</string>
-    <string name="product_pipe_leakage_description">Pipe leakage repair and service</string>
-    <string name="product_tap_fitting_title">Tap Fitting</string>
-    <string name="product_tap_fitting_description">Tap and fitting repair or installation</string>
-    <string name="product_other_plumbing_title">Other Plumbing</string>
-    <string name="product_other_plumbing_description">Other plumbing service</string>
-
-    <string name="product_general_service_title">General Service</string>
-    <string name="product_general_service_description">Any other service you need help with</string>
 
     <string name="problem_selection_header_title">Select Problem</string>
     <string name="problem_selection_header_subtitle">What problem are you facing?</string>
@@ -237,9 +215,54 @@
     <string name="my_services_no_preferred_schedule">Date &amp; time not selected</string>
     <string name="cd_my_services_progress">Loading your services</string>
 
+    <string name="active_service_header_title">Active Service</string>
+    <string name="active_service_header_subtitle">Track what is currently in progress</string>
+    <string name="active_service_empty_title">No active services</string>
+    <string name="active_service_empty_subtitle">Services you book will appear here while in progress</string>
+    <string name="active_service_error_unauthorized">Your session has expired. Please log in again.</string>
+    <string name="active_service_error_generic">Could not load your active services. Please try again.</string>
+    <string name="cd_active_service_progress">Loading active services</string>
+
+    <string name="service_history_header_title">Service History</string>
+    <string name="service_history_header_subtitle">Review your past service requests</string>
+    <string name="service_history_empty_title">No service history yet</string>
+    <string name="service_history_empty_subtitle">Completed or cancelled services will appear here</string>
+    <string name="service_history_error_unauthorized">Your session has expired. Please log in again.</string>
+    <string name="service_history_error_generic">Could not load your service history. Please try again.</string>
+    <string name="cd_service_history_progress">Loading service history</string>
+
+    <string name="service_details_title">Service Details</string>
+    <string name="service_details_error_not_found">Service request not found.</string>
+    <string name="service_details_error_forbidden">You don\'t have access to this service request.</string>
+    <string name="service_details_error_unauthorized">Your session has expired. Please log in again.</string>
+    <string name="service_details_error_generic">Could not load service details. Please try again.</string>
+    <string name="cd_service_details_progress">Loading service details</string>
+    <string name="service_details_section_service">Service Information</string>
+    <string name="service_details_section_product">Product</string>
+    <string name="service_details_section_complaint">Complaint</string>
+    <string name="service_details_section_address">Service Address</string>
+    <string name="service_details_section_technician">Technician</string>
+    <string name="service_details_section_timeline">Service Progress</string>
+    <string name="service_details_section_visits">Visit History</string>
+    <string name="service_details_label_service_type">Service Type</string>
+    <string name="service_details_label_preferred_date">Preferred Date</string>
+    <string name="service_details_label_preferred_time">Preferred Time</string>
+    <string name="service_details_label_category">Category</string>
+    <string name="service_details_label_brand">Brand</string>
+    <string name="service_details_label_model">Model</string>
+    <string name="service_details_label_serial_number">Serial Number</string>
+    <string name="service_details_label_technician_name">Name</string>
+    <string name="service_details_label_technician_mobile">Mobile</string>
+    <string name="service_details_label_employee_code">Employee Code</string>
+    <string name="service_details_visit_title">Visit #%1$d · %2$s</string>
+    <string name="service_details_visit_diagnosis">Diagnosis: %1$s</string>
+    <string name="service_details_visit_work_performed">Work Performed: %1$s</string>
+    <string name="service_details_visit_attachments_count">%1$d attachment(s)</string>
+
     <string name="add_address_title">Add New Address</string>
+    <string name="edit_address_title">Edit Address</string>
     <string name="add_address_subtitle">Enter the address where you need the service</string>
-    <string name="add_address_hint_type">Address Label (e.g. Home, Office)</string>
+    <string name="add_address_hint_type">Address Label (e.g. Home, Office) *</string>
     <string name="add_address_hint_line1">Address Line 1</string>
     <string name="add_address_hint_line2">Address Line 2 (Optional)</string>
     <string name="add_address_hint_landmark">Landmark (Optional)</string>
@@ -289,6 +312,9 @@
     <string name="confirm_booking_section_time">Time</string>
     <string name="confirm_booking_api_not_available">Booking API will be available once backend integration is added</string>
     <string name="confirm_booking_success">Booking confirmed! Our team will contact you shortly.</string>
+    <string name="confirm_booking_success_title">Booking Confirmed</string>
+    <string name="confirm_booking_success_subtitle">Our team will contact you shortly.</string>
+    <string name="cd_confirm_booking_success_icon">Booking confirmed</string>
     <string name="confirm_booking_error_unsupported_category">Booking for this category isn\'t available yet. Please contact support.</string>
     <string name="confirm_booking_error_missing_address">Something went wrong. Please select your address again.</string>
     <string name="confirm_booking_error_validation_generic">Please check your booking details and try again</string>
@@ -299,4 +325,80 @@
     <string name="confirm_booking_error_unauthorized">Your session has expired. Please log in again.</string>
     <string name="confirm_booking_error_generic">Could not confirm your booking. Please try again</string>
     <string name="cd_confirm_booking_progress">Confirming booking</string>
+
+    <string name="profile_title">My Profile</string>
+    <string name="profile_name_fallback">Customer</string>
+    <string name="profile_value_not_available">Not available</string>
+    <string name="profile_customer_code_format">Customer Code: %1$s</string>
+    <string name="cd_profile_avatar">Profile photo</string>
+    <string name="cd_profile_email_icon">Email</string>
+    <string name="cd_profile_mobile_icon">Mobile number</string>
+    <string name="profile_menu_personal_information">Personal Information</string>
+    <string name="profile_menu_my_addresses">My Addresses</string>
+    <string name="profile_menu_app_settings">App Settings</string>
+    <string name="profile_menu_help_support">Help &amp; Support</string>
+    <string name="profile_menu_about">About</string>
+    <string name="profile_menu_logout">Logout</string>
+
+    <string name="cd_menu_button">Open menu</string>
+    <string name="nav_drawer_settings">Settings</string>
+    <string name="nav_drawer_version_format">v%1$s</string>
+
+    <string name="my_addresses_title">My Addresses</string>
+    <string name="cd_my_addresses_progress">Loading your addresses</string>
+    <string name="my_addresses_empty_title">No saved addresses</string>
+    <string name="my_addresses_empty_subtitle">Add your first service address</string>
+    <string name="my_addresses_add_button">Add New Address</string>
+    <string name="my_addresses_default_badge">Default</string>
+    <string name="my_addresses_action_edit">Edit</string>
+    <string name="my_addresses_action_delete">Delete</string>
+    <string name="my_addresses_action_set_default">Set as Default</string>
+    <string name="my_addresses_delete_confirm_title">Delete this address?</string>
+    <string name="my_addresses_delete_confirm_positive">Delete</string>
+    <string name="my_addresses_delete_confirm_negative">Cancel</string>
+    <string name="my_addresses_error_action_generic">Something went wrong. Please try again.</string>
+    <string name="my_addresses_city_state_postal_format">%1$s, %2$s - %3$s</string>
+    <string name="my_addresses_landmark_format">Landmark: %1$s</string>
+
+    <string name="personal_information_title">Personal Information</string>
+    <string name="personal_information_label_full_name">Full Name</string>
+    <string name="personal_information_label_customer_code">Customer Code</string>
+    <string name="personal_information_label_mobile">Mobile Number</string>
+    <string name="personal_information_label_email">Email Address</string>
+
+    <string name="help_support_title">Help &amp; Support</string>
+    <string name="help_support_section_contact">Contact Support</string>
+    <string name="help_support_phone_label">Phone</string>
+    <string name="help_support_phone_value">+91 908 0000 908</string>
+    <string name="help_support_email_label">Email</string>
+    <string name="help_support_email_value">info@globalserviceskovai.in</string>
+    <string name="help_support_section_faq">Frequently Asked Questions</string>
+    <string name="help_support_faq_book_service_question">How do I book a service?</string>
+    <string name="help_support_faq_book_service_answer">Open Book a Service, select the service category, product, problem, address, date and time, then confirm the booking.</string>
+    <string name="help_support_faq_my_services_question">How can I check my booking?</string>
+    <string name="help_support_faq_my_services_answer">Open My Services to view your service requests.</string>
+    <string name="help_support_faq_active_service_question">How can I see an active service?</string>
+    <string name="help_support_faq_active_service_answer">Open Active Service.</string>
+    <string name="help_support_faq_service_history_question">Where can I see completed services?</string>
+    <string name="help_support_faq_service_history_answer">Open Service History.</string>
+    <string name="help_support_faq_manage_addresses_question">How do I manage my addresses?</string>
+    <string name="help_support_faq_manage_addresses_answer">Open Profile → My Addresses.</string>
+    <string name="help_support_section_service">Service Support</string>
+    <string name="help_support_service_message">For booking-related or service-related assistance, please contact Global Services support.</string>
+
+    <string name="about_title">About</string>
+    <string name="about_app_subtitle">Customer Service Application</string>
+    <string name="about_description">Global Services provides professional battery regeneration and refurbished battery services along with home appliance service support.</string>
+    <string name="about_section_version">App Version</string>
+    <string name="about_version_format">Version %1$s</string>
+    <string name="about_section_contact">Contact Information</string>
+    <string name="about_copyright">© Global Services. All rights reserved.</string>
+
+    <string name="app_settings_section_app">App</string>
+    <string name="app_settings_label_notifications">Notifications</string>
+    <string name="app_settings_value_notifications_unavailable">Not configurable yet</string>
+    <string name="app_settings_label_version">App Version</string>
+    <string name="app_settings_section_information">Information</string>
+    <string name="app_settings_label_privacy">Privacy</string>
+    <string name="app_settings_value_privacy_unavailable">Not available yet</string>
 </resources>

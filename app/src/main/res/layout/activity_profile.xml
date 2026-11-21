@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/booking_page_background"
+    tools:context=".ui.profile.ProfileActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/header_container"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/login_header_navy"
+        android:paddingHorizontal="@dimen/login_content_horizontal_margin"
+        android:paddingTop="@dimen/login_content_horizontal_margin"
+        android:paddingBottom="@dimen/home_section_spacing"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/back_button"
+            android:layout_width="@dimen/login_back_button_size"
+            android:layout_height="@dimen/login_back_button_size"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/cd_back"
+            android:padding="8dp"
+            android:src="@drawable/ic_arrow_back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/white" />
+
+        <TextView
+            android:id="@+id/header_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="@string/profile_title"
+            android:textColor="@color/white"
+            android:textSize="@dimen/login_title_text_size"
+            app:layout_constraintBottom_toBottomOf="@id/back_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/back_button"
+            app:layout_constraintTop_toTopOf="@id/back_button" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/header_container">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="@dimen/login_content_horizontal_margin"
+            android:paddingTop="@dimen/home_section_spacing"
+            android:paddingBottom="@dimen/home_section_spacing">
+
+            <!-- Profile header card -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_category_card"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:padding="@dimen/home_section_spacing">
+
+                <ImageView
+                    android:id="@+id/profile_avatar"
+                    android:layout_width="@dimen/profile_avatar_size"
+                    android:layout_height="@dimen/profile_avatar_size"
+                    android:background="@drawable/bg_avatar_circle"
+                    android:contentDescription="@string/cd_profile_avatar"
+                    android:padding="@dimen/profile_avatar_icon_padding"
+                    android:src="@drawable/ic_account"
+                    app:tint="@color/primary_blue" />
+
+                <TextView
+                    android:id="@+id/profile_name_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:textColor="@color/text_primary"
+                    android:textSize="@dimen/profile_name_text_size"
+                    tools:text="Karthik Kumar" />
+
+                <TextView
+                    android:id="@+id/profile_customer_code_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="@dimen/category_description_text_size"
+                    android:visibility="gone"
+                    tools:text="Customer Code: CUST-0001"
+                    tools:visibility="visible" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/home_section_spacing"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:contentDescription="@string/cd_profile_email_icon"
+                        android:src="@drawable/ic_email"
+                        app:tint="@color/text_secondary" />
+
+                    <TextView
+                        android:id="@+id/profile_email_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:textColor="@color/text_primary"
+                        android:textSize="@dimen/category_description_text_size"
+                        tools:text="karthik.kumar@example.com" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:contentDescription="@string/cd_profile_mobile_icon"
+                        android:src="@drawable/ic_phone"
+                        app:tint="@color/text_secondary" />
+
+                    <TextView
+                        android:id="@+id/profile_mobile_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:textColor="@color/text_primary"
+                        android:textSize="@dimen/category_description_text_size"
+                        tools:text="9791222882" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- Menu -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/home_section_spacing"
+                android:background="@drawable/bg_category_card"
+                android:orientation="vertical"
+                android:paddingHorizontal="@dimen/category_card_padding">
+
+                <include
+                    android:id="@+id/menu_personal_information"
+                    layout="@layout/item_profile_menu" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/divider_color" />
+
+                <include
+                    android:id="@+id/menu_my_addresses"
+                    layout="@layout/item_profile_menu" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/divider_color" />
+
+                <include
+                    android:id="@+id/menu_app_settings"
+                    layout="@layout/item_profile_menu" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/divider_color" />
+
+                <include
+                    android:id="@+id/menu_help_support"
+                    layout="@layout/item_profile_menu" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/divider_color" />
+
+                <include
+                    android:id="@+id/menu_about"
+                    layout="@layout/item_profile_menu" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/divider_color" />
+
+                <include
+                    android:id="@+id/menu_logout"
+                    layout="@layout/item_profile_menu" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

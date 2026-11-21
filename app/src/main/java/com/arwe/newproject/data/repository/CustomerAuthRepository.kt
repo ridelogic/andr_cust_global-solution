@@ -1,5 +1,7 @@
 package com.arwe.newproject.data.repository
 
+import android.util.Log
+import com.arwe.newproject.BuildConfig
 import com.arwe.newproject.data.remote.CustomerAuthApiService
 import com.arwe.newproject.data.remote.dto.CustomerAddressRequest
 import com.arwe.newproject.data.remote.dto.CustomerLoginRequest
@@ -38,6 +40,20 @@ interface CustomerAuthRepository {
         postalCode: String
     ): AddressResult
 
+    suspend fun updateAddress(
+        id: Long,
+        addressType: String,
+        addressLine1: String,
+        addressLine2: String?,
+        landmark: String?,
+        city: String,
+        state: String,
+        postalCode: String,
+        isDefault: Boolean
+    ): AddressResult
+
+    suspend fun deleteAddress(id: Long): AddressDeleteResult
+
     suspend fun sendOtp(mobile: String): SendOtpResult
 
     suspend fun verifyOtp(mobile: String, otp: String): VerifyOtpResult
@@ -56,6 +72,8 @@ interface CustomerAuthRepository {
     ): ServiceRequestResult
 
     suspend fun getServiceRequests(): ServiceRequestListResult
+
+    suspend fun getServiceRequestDetail(id: Long): ServiceRequestDetailResult
 }
 
 /**
@@ -184,7 +202,83 @@ class DefaultCustomerAuthRepository(
                 postalCode = postalCode,
                 isDefault = false
             )
+            if (BuildConfig.DEBUG) {
+                Log.d(
+                    "AddAddressDebug", // TEMPORARY - DIAGNOSTIC ONLY - REMOVE after root cause is confirmed
+                    "createAddress request: address_type='${request.addressType}' " +
+                        "address_line1='${request.addressLine1}' address_line2='${request.addressLine2}' " +
+                        "landmark='${request.landmark}' city='${request.city}' state='${request.state}' " +
+                        "postal_code='${request.postalCode}' is_default=${request.isDefault}"
+                )
+            }
             val response = apiService.createAddress(request)
+            if (response.isSuccessful) {
+                val body = response.body()
+                if (BuildConfig.DEBUG) {
+                    Log.d("AddAddressDebug", "createAddress response: HTTP ${response.code()}, body=$body")
+                }
+                if (body != null) {
+                    AddressResult.Success(body)
+                } else {
+                    AddressResult.Error(ApiErrorReason.UNKNOWN, null)
+                }
+            } else {
+                val (reason, message, fieldErrors) = classifyHttpError(response)
+                if (BuildConfig.DEBUG) {
+                    // classifyHttpError() already consumed response.errorBody() (a ResponseBody can
+                    // only be read once), so message/fieldErrors below ARE the parsed raw body - not
+                    // re-read it here, which would always log null.
+                    Log.d(
+                        "AddAddressDebug",
+                        "createAddress error: HTTP ${response.code()}, reason=$reason, message=$message, " +
+                            "fieldErrors=$fieldErrors"
+                    )
+                }
+                AddressResult.Error(reason, message, fieldErrors)
+            }
+        } catch (timeout: SocketTimeoutException) {
+            AddressResult.Error(ApiErrorReason.TIMEOUT, null)
+        } catch (network: IOException) {
+            AddressResult.Error(ApiErrorReason.NETWORK_UNAVAILABLE, null)
+        } catch (unexpected: Exception) {
+            AddressResult.Error(ApiErrorReason.UNKNOWN, null)
+        }
+    }
+
+    /**
+     * Talks to PATCH customer/addresses/{id} - see AddressController::update()/validated() for
+     * the exact contract. Unlike createAddress(), "is_default" is NOT hardcoded here: update()
+     * requires the full field set on every call (same "key must be present" reasoning as
+     * CustomerAddressRequest's doc), and if a caller is only editing address text (not touching
+     * default status), forcing is_default=false would silently un-default an already-default
+     * address - so the caller passes through whatever value it wants persisted. Setting
+     * isDefault=true un-defaults every other address automatically server-side
+     * ($customer->addresses()->whereKeyNot($address->id)->update(['is_default' => false])) - this
+     * method never needs to touch any other address itself.
+     */
+    override suspend fun updateAddress(
+        id: Long,
+        addressType: String,
+        addressLine1: String,
+        addressLine2: String?,
+        landmark: String?,
+        city: String,
+        state: String,
+        postalCode: String,
+        isDefault: Boolean
+    ): AddressResult = withContext(Dispatchers.IO) {
+        try {
+            val request = CustomerAddressRequest(
+                addressType = addressType,
+                addressLine1 = addressLine1,
+                addressLine2 = addressLine2,
+                landmark = landmark,
+                city = city,
+                state = state,
+                postalCode = postalCode,
+                isDefault = isDefault
+            )
+            val response = apiService.updateAddress(id, request)
             if (response.isSuccessful) {
                 val body = response.body()
                 if (body != null) {
@@ -202,6 +296,29 @@ class DefaultCustomerAuthRepository(
             AddressResult.Error(ApiErrorReason.NETWORK_UNAVAILABLE, null)
         } catch (unexpected: Exception) {
             AddressResult.Error(ApiErrorReason.UNKNOWN, null)
+        }
+    }
+
+    /**
+     * Talks to DELETE customer/addresses/{id} - see AddressController::destroy(). Returns a
+     * plain {"message": "..."} body on success (HTTP 200, not 204) - never the deleted resource -
+     * so only success/failure is surfaced; nothing in the UI needs the message text itself.
+     */
+    override suspend fun deleteAddress(id: Long): AddressDeleteResult = withContext(Dispatchers.IO) {
+        try {
+            val response = apiService.deleteAddress(id)
+            if (response.isSuccessful) {
+                AddressDeleteResult.Success
+            } else {
+                val (reason, message, fieldErrors) = classifyHttpError(response)
+                AddressDeleteResult.Error(reason, message, fieldErrors)
+            }
+        } catch (timeout: SocketTimeoutException) {
+            AddressDeleteResult.Error(ApiErrorReason.TIMEOUT, null)
+        } catch (network: IOException) {
+            AddressDeleteResult.Error(ApiErrorReason.NETWORK_UNAVAILABLE, null)
+        } catch (unexpected: Exception) {
+            AddressDeleteResult.Error(ApiErrorReason.UNKNOWN, null)
         }
     }
 
@@ -395,6 +512,32 @@ class DefaultCustomerAuthRepository(
             ServiceRequestListResult.Error(ApiErrorReason.NETWORK_UNAVAILABLE, null)
         } catch (unexpected: Exception) {
             ServiceRequestListResult.Error(ApiErrorReason.UNKNOWN, null)
+        }
+    }
+
+    /** Talks to GET customer/service-requests/{id} - see ServiceRequestController::show(). A
+     * missing id maps to NOT_FOUND (404), an id owned by another customer maps to FORBIDDEN
+     * (403) - both via the existing classifyHttpError/reasonForCode pipeline, unchanged. */
+    override suspend fun getServiceRequestDetail(id: Long): ServiceRequestDetailResult = withContext(Dispatchers.IO) {
+        try {
+            val response = apiService.getServiceRequestDetail(id)
+            if (response.isSuccessful) {
+                val body = response.body()
+                if (body != null) {
+                    ServiceRequestDetailResult.Success(body)
+                } else {
+                    ServiceRequestDetailResult.Error(ApiErrorReason.UNKNOWN, null)
+                }
+            } else {
+                val (reason, message, fieldErrors) = classifyHttpError(response)
+                ServiceRequestDetailResult.Error(reason, message, fieldErrors)
+            }
+        } catch (timeout: SocketTimeoutException) {
+            ServiceRequestDetailResult.Error(ApiErrorReason.TIMEOUT, null)
+        } catch (network: IOException) {
+            ServiceRequestDetailResult.Error(ApiErrorReason.NETWORK_UNAVAILABLE, null)
+        } catch (unexpected: Exception) {
+            ServiceRequestDetailResult.Error(ApiErrorReason.UNKNOWN, null)
         }
     }
 

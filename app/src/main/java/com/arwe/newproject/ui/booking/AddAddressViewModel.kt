@@ -1,10 +1,12 @@
 package com.arwe.newproject.ui.booking
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.arwe.newproject.BuildConfig
 import com.arwe.newproject.R
 import com.arwe.newproject.data.repository.AddressResult
 import com.arwe.newproject.data.repository.ApiErrorReason
@@ -59,6 +61,11 @@ class AddAddressViewModel(
             postalCodeError = requiredFieldError(postalCode.trim(), MAX_POSTAL_CODE_LENGTH)
         )
         _validationState.value = result
+        if (BuildConfig.DEBUG && !result.isValid) {
+            // TEMPORARY - DIAGNOSTIC ONLY - REMOVE after root cause is confirmed. A blocked
+            // validation means save()/the network call below never runs at all.
+            Log.d("AddAddressDebug", "validate() blocked submission: $result")
+        }
         return result
     }
 
@@ -91,6 +98,47 @@ class AddAddressViewModel(
                     city = city.trim(),
                     state = state.trim(),
                     postalCode = postalCode.trim()
+                )
+            ) {
+                is AddressResult.Success -> _uiState.value = AddAddressUiState.Success(result.address)
+                is AddressResult.Error -> _uiState.value = AddAddressUiState.Error(messageFor(result))
+            }
+        }
+    }
+
+    /**
+     * Only called after [validate] has confirmed every required field is valid, when editing an
+     * existing address (see AddAddressActivity.newEditIntent()). [isDefault] is the address's own
+     * current default status, passed through unchanged - update() requires it be present on every
+     * call and would silently un-default an already-default address if this always sent false
+     * (see CustomerAuthRepository.updateAddress()'s own doc).
+     */
+    fun update(
+        addressId: Long,
+        addressType: String,
+        addressLine1: String,
+        addressLine2: String,
+        landmark: String,
+        city: String,
+        state: String,
+        postalCode: String,
+        isDefault: Boolean
+    ) {
+        if (_uiState.value == AddAddressUiState.Loading) return
+
+        viewModelScope.launch {
+            _uiState.value = AddAddressUiState.Loading
+            when (
+                val result = repository.updateAddress(
+                    id = addressId,
+                    addressType = addressType.trim(),
+                    addressLine1 = addressLine1.trim(),
+                    addressLine2 = addressLine2.trim().takeIf { it.isNotEmpty() },
+                    landmark = landmark.trim().takeIf { it.isNotEmpty() },
+                    city = city.trim(),
+                    state = state.trim(),
+                    postalCode = postalCode.trim(),
+                    isDefault = isDefault
                 )
             ) {
                 is AddressResult.Success -> _uiState.value = AddAddressUiState.Success(result.address)

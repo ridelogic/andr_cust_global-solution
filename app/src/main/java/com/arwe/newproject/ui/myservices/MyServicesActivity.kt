@@ -1,9 +1,9 @@
 package com.arwe.newproject.ui.myservices
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Lifecycle
@@ -13,6 +13,7 @@ import com.arwe.newproject.R
 import com.arwe.newproject.data.remote.dto.CustomerServiceRequestSummaryResponse
 import com.arwe.newproject.databinding.ActivityMyServicesBinding
 import com.arwe.newproject.databinding.ItemServiceRequestBinding
+import com.arwe.newproject.ui.servicedetails.ServiceDetailsActivity
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.launch
 import java.time.LocalDate
@@ -24,8 +25,7 @@ import java.util.Locale
  * Shows the customer's own service requests (GET customer/service-requests). Cards only display
  * fields ServiceRequestSummaryResource actually returns (service_type/status/preferred_date/
  * preferred_time_from/ticket_number) - that resource has no product/complaint/address fields;
- * only the detail endpoint does, and that screen is not implemented yet (see the "Details coming
- * soon" tap handler below).
+ * only the detail endpoint does. Tapping a card opens ServiceDetailsActivity with the real id.
  */
 class MyServicesActivity : AppCompatActivity() {
 
@@ -87,8 +87,10 @@ class MyServicesActivity : AppCompatActivity() {
             item.serviceRequestDateTime.text = formatSchedule(serviceRequest)
             item.root.contentDescription = "${serviceRequest.serviceType}. ${serviceRequest.status.name}"
             item.root.setOnClickListener {
-                // Service Details is not implemented yet - see class doc.
-                Toast.makeText(this, R.string.my_services_details_coming_soon, Toast.LENGTH_SHORT).show()
+                startActivity(
+                    Intent(this, ServiceDetailsActivity::class.java)
+                        .putExtra(ServiceDetailsActivity.EXTRA_SERVICE_REQUEST_ID, serviceRequest.id)
+                )
             }
 
             if (index > 0) {

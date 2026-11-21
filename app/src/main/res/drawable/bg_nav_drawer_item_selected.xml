@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Subtle highlighted background for the current drawer destination - a light, semi-transparent
+     white wash over the navy drawer background, not a solid color swap. -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="@color/illustration_placeholder_bg" />
+    <corners android:radius="@dimen/login_input_corner_radius" />
+</shape>

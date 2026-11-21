@@ -3,12 +3,14 @@ package com.arwe.newproject.ui.booking
 import android.app.Application
 import com.arwe.newproject.data.remote.dto.CustomerServiceRequestResponse
 import com.arwe.newproject.data.repository.AddressListResult
+import com.arwe.newproject.data.repository.AddressDeleteResult
 import com.arwe.newproject.data.repository.AddressResult
 import com.arwe.newproject.data.repository.ApiErrorReason
 import com.arwe.newproject.data.repository.CustomerAuthRepository
 import com.arwe.newproject.data.repository.ProductBatteryTypeListResult
 import com.arwe.newproject.data.repository.RegisterResult
 import com.arwe.newproject.data.repository.SendOtpResult
+import com.arwe.newproject.data.repository.ServiceRequestDetailResult
 import com.arwe.newproject.data.repository.ServiceRequestListResult
 import com.arwe.newproject.data.repository.ServiceRequestResult
 import com.arwe.newproject.data.repository.VerifyOtpResult
@@ -67,6 +69,14 @@ class ConfirmBookingViewModelTest {
             city: String, state: String, postalCode: String
         ): AddressResult = throw UnsupportedOperationException("not used by this test")
 
+        override suspend fun updateAddress(
+            id: Long, addressType: String, addressLine1: String, addressLine2: String?, landmark: String?,
+            city: String, state: String, postalCode: String, isDefault: Boolean
+        ): AddressResult = throw UnsupportedOperationException("not used by this test")
+
+        override suspend fun deleteAddress(id: Long): AddressDeleteResult =
+            throw UnsupportedOperationException("not used by this test")
+
         override suspend fun sendOtp(mobile: String): SendOtpResult =
             throw UnsupportedOperationException("not used by this test")
 
@@ -92,24 +102,9 @@ class ConfirmBookingViewModelTest {
 
         override suspend fun getServiceRequests(): ServiceRequestListResult =
             throw UnsupportedOperationException("not used by this test")
-    }
 
-    @Test
-    fun `a category with no confirmed mapping never calls the repository and reports UnsupportedCategory`() {
-        val fakeRepository = FakeRepository()
-        val viewModel = ConfirmBookingViewModel(Application(), fakeRepository)
-        val problem = ProblemCatalog.problemsFor(ServiceCategory.ELECTRICAL, dummyProduct).first()
-
-        viewModel.confirmBooking(
-            category = ServiceCategory.ELECTRICAL,
-            problem = problem,
-            customerAddressId = 42L,
-            preferredDate = "2026-09-25",
-            preferredTimeFrom = "09:00"
-        )
-
-        assertFalse(fakeRepository.createServiceRequestCalled)
-        assertEquals(ConfirmBookingUiState.UnsupportedCategory, viewModel.uiState.value)
+        override suspend fun getServiceRequestDetail(id: Long): ServiceRequestDetailResult =
+            throw UnsupportedOperationException("not used by this test")
     }
 
     @Test
@@ -138,7 +133,7 @@ class ConfirmBookingViewModelTest {
     }
 
     @Test
-    fun `Home Appliance Other still has no confirmed mapping and reports UnsupportedCategory`() {
+    fun `Home Appliance Other with a valid address transitions Idle to Loading then Success, using service_type_id 11`() = runTest {
         val fakeRepository = FakeRepository()
         val viewModel = ConfirmBookingViewModel(Application(), fakeRepository)
         val other = ProblemCatalog.problemsFor(ServiceCategory.HOME_APPLIANCE, dummyProduct)
@@ -151,9 +146,15 @@ class ConfirmBookingViewModelTest {
             preferredDate = null,
             preferredTimeFrom = null
         )
+        assertEquals(ConfirmBookingUiState.Loading, viewModel.uiState.value)
+        assertEquals(11L, fakeRepository.capturedServiceTypeId)
+        assertEquals("Other", fakeRepository.capturedComplaint)
 
-        assertFalse(fakeRepository.createServiceRequestCalled)
-        assertEquals(ConfirmBookingUiState.UnsupportedCategory, viewModel.uiState.value)
+        val response = CustomerServiceRequestResponse(203, "TCK-0203")
+        fakeRepository.createServiceRequestDeferred.complete(ServiceRequestResult.Success(response))
+        advanceUntilIdle()
+
+        assertEquals(ConfirmBookingUiState.Success(response), viewModel.uiState.value)
     }
 
     @Test

@@ -76,55 +76,5 @@ object ProductCatalog {
             )
         )
 
-        ServiceCategory.ELECTRICAL -> listOf(
-            Product(
-                id = "wiring",
-                titleRes = R.string.product_wiring_title,
-                descriptionRes = R.string.product_wiring_description,
-                iconRes = R.drawable.ic_category_electrical
-            ),
-            Product(
-                id = "switchboard",
-                titleRes = R.string.product_switchboard_title,
-                descriptionRes = R.string.product_switchboard_description,
-                iconRes = R.drawable.ic_category_electrical
-            ),
-            Product(
-                id = "other_electrical",
-                titleRes = R.string.product_other_electrical_title,
-                descriptionRes = R.string.product_other_electrical_description,
-                iconRes = R.drawable.ic_category_electrical
-            )
-        )
-
-        ServiceCategory.PLUMBING -> listOf(
-            Product(
-                id = "pipe_leakage",
-                titleRes = R.string.product_pipe_leakage_title,
-                descriptionRes = R.string.product_pipe_leakage_description,
-                iconRes = R.drawable.ic_category_plumbing
-            ),
-            Product(
-                id = "tap_fitting",
-                titleRes = R.string.product_tap_fitting_title,
-                descriptionRes = R.string.product_tap_fitting_description,
-                iconRes = R.drawable.ic_category_plumbing
-            ),
-            Product(
-                id = "other_plumbing",
-                titleRes = R.string.product_other_plumbing_title,
-                descriptionRes = R.string.product_other_plumbing_description,
-                iconRes = R.drawable.ic_category_plumbing
-            )
-        )
-
-        ServiceCategory.OTHER -> listOf(
-            Product(
-                id = "general_service",
-                titleRes = R.string.product_general_service_title,
-                descriptionRes = R.string.product_general_service_description,
-                iconRes = R.drawable.ic_category_other
-            )
-        )
     }
 }

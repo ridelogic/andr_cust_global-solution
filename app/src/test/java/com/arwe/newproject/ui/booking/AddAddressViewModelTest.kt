@@ -3,6 +3,7 @@ package com.arwe.newproject.ui.booking
 import android.app.Application
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.arwe.newproject.data.remote.dto.CustomerAddressResponse
+import com.arwe.newproject.data.repository.AddressDeleteResult
 import com.arwe.newproject.data.repository.AddressListResult
 import com.arwe.newproject.data.repository.AddressResult
 import com.arwe.newproject.data.repository.ApiErrorReason
@@ -10,6 +11,7 @@ import com.arwe.newproject.data.repository.CustomerAuthRepository
 import com.arwe.newproject.data.repository.ProductBatteryTypeListResult
 import com.arwe.newproject.data.repository.RegisterResult
 import com.arwe.newproject.data.repository.SendOtpResult
+import com.arwe.newproject.data.repository.ServiceRequestDetailResult
 import com.arwe.newproject.data.repository.ServiceRequestListResult
 import com.arwe.newproject.data.repository.ServiceRequestResult
 import com.arwe.newproject.data.repository.VerifyOtpResult
@@ -51,6 +53,11 @@ class AddAddressViewModelTest {
         var createAddressCallCount = 0
         val createAddressDeferred = CompletableDeferred<AddressResult>()
 
+        var updateAddressCallCount = 0
+        var capturedUpdateId: Long? = null
+        var capturedUpdateIsDefault: Boolean? = null
+        val updateAddressDeferred = CompletableDeferred<AddressResult>()
+
         override suspend fun register(
             name: String, mobile: String, email: String, password: String, passwordConfirmation: String
         ): RegisterResult = throw UnsupportedOperationException("not used by this test")
@@ -68,6 +75,19 @@ class AddAddressViewModelTest {
             createAddressCallCount++
             return createAddressDeferred.await()
         }
+
+        override suspend fun updateAddress(
+            id: Long, addressType: String, addressLine1: String, addressLine2: String?, landmark: String?,
+            city: String, state: String, postalCode: String, isDefault: Boolean
+        ): AddressResult {
+            updateAddressCallCount++
+            capturedUpdateId = id
+            capturedUpdateIsDefault = isDefault
+            return updateAddressDeferred.await()
+        }
+
+        override suspend fun deleteAddress(id: Long): AddressDeleteResult =
+            throw UnsupportedOperationException("not used by this test")
 
         override suspend fun sendOtp(mobile: String): SendOtpResult =
             throw UnsupportedOperationException("not used by this test")
@@ -88,6 +108,9 @@ class AddAddressViewModelTest {
         ): ServiceRequestResult = throw UnsupportedOperationException("not used by this test")
 
         override suspend fun getServiceRequests(): ServiceRequestListResult =
+            throw UnsupportedOperationException("not used by this test")
+
+        override suspend fun getServiceRequestDetail(id: Long): ServiceRequestDetailResult =
             throw UnsupportedOperationException("not used by this test")
     }
 
@@ -157,6 +180,47 @@ class AddAddressViewModelTest {
         advanceUntilIdle()
 
         assertEquals(AddAddressUiState.Success(created), viewModel.uiState.value)
+    }
+
+    @Test
+    fun `update transitions Idle to Loading then Success with the edited address, preserving the given isDefault`() = runTest {
+        val fakeRepository = FakeRepository()
+        val viewModel = AddAddressViewModel(Application(), fakeRepository)
+
+        assertEquals(AddAddressUiState.Idle, viewModel.uiState.value)
+
+        viewModel.update(42, "Home", "221B Baker Street", "Near Central Park", "Opposite Bus Stand", "Coimbatore", "Tamil Nadu", "641035", true)
+        assertEquals(AddAddressUiState.Loading, viewModel.uiState.value)
+        assertEquals(1, fakeRepository.updateAddressCallCount)
+        assertEquals(42L, fakeRepository.capturedUpdateId)
+        assertEquals(true, fakeRepository.capturedUpdateIsDefault)
+
+        val updated = address().copy(addressLine1 = "New Address Line", isDefault = true)
+        fakeRepository.updateAddressDeferred.complete(AddressResult.Success(updated))
+        advanceUntilIdle()
+
+        assertEquals(AddAddressUiState.Success(updated), viewModel.uiState.value)
+    }
+
+    @Test
+    fun `update HTTP 422 surfaces the backend field error`() = runTest {
+        val fakeRepository = FakeRepository()
+        val viewModel = AddAddressViewModel(Application(), fakeRepository)
+
+        viewModel.update(42, "", "221B Baker Street", "", "", "Coimbatore", "Tamil Nadu", "641035", false)
+        fakeRepository.updateAddressDeferred.complete(
+            AddressResult.Error(
+                reason = ApiErrorReason.VALIDATION_FAILED,
+                message = null,
+                fieldErrors = mapOf("address_type" to listOf("The address type field is required."))
+            )
+        )
+        advanceUntilIdle()
+
+        assertEquals(
+            AddAddressUiState.Error("The address type field is required."),
+            viewModel.uiState.value
+        )
     }
 
     @Test

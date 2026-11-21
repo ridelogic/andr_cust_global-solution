@@ -19,23 +19,5 @@ enum class ServiceCategory(
         titleRes = R.string.category_home_appliance_title,
         descriptionRes = R.string.category_home_appliance_description,
         iconRes = R.drawable.ic_category_home_appliance
-    ),
-    ELECTRICAL(
-        id = "electrical",
-        titleRes = R.string.category_electrical_title,
-        descriptionRes = R.string.category_electrical_description,
-        iconRes = R.drawable.ic_category_electrical
-    ),
-    PLUMBING(
-        id = "plumbing",
-        titleRes = R.string.category_plumbing_title,
-        descriptionRes = R.string.category_plumbing_description,
-        iconRes = R.drawable.ic_category_plumbing
-    ),
-    OTHER(
-        id = "other",
-        titleRes = R.string.category_other_title,
-        descriptionRes = R.string.category_other_description,
-        iconRes = R.drawable.ic_category_other
     )
 }

@@ -11,6 +11,7 @@ import com.arwe.newproject.R
 import com.arwe.newproject.databinding.ActivityConfirmBookingBinding
 import com.arwe.newproject.databinding.ItemSummaryBinding
 import com.google.android.material.snackbar.Snackbar
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.time.LocalDate
 import java.time.LocalTime
@@ -91,7 +92,11 @@ class ConfirmBookingActivity : AppCompatActivity() {
             is ConfirmBookingUiState.Success -> {
                 binding.confirmBookingProgress.visibility = View.GONE
                 binding.confirmBookingButton.isEnabled = false
-                Snackbar.make(binding.root, R.string.confirm_booking_success, Snackbar.LENGTH_LONG).show()
+                binding.successOverlay.visibility = View.VISIBLE
+                lifecycleScope.launch {
+                    delay(SUCCESS_DISPLAY_DURATION_MS)
+                    finish()
+                }
             }
 
             is ConfirmBookingUiState.UnsupportedCategory -> {
@@ -121,7 +126,7 @@ class ConfirmBookingActivity : AppCompatActivity() {
     }
 
     private fun resolveCategory(id: String?): ServiceCategory =
-        ServiceCategory.values().firstOrNull { it.id == id } ?: ServiceCategory.OTHER
+        ServiceCategory.values().firstOrNull { it.id == id } ?: ServiceCategory.BATTERY
 
     private fun resolveProduct(category: ServiceCategory, id: String?): Product {
         val products = ProductCatalog.productsFor(category)
@@ -141,5 +146,9 @@ class ConfirmBookingActivity : AppCompatActivity() {
     private fun formatTime(value: String): String {
         val time = runCatching { LocalTime.parse(value) }.getOrNull() ?: return value
         return time.format(DateTimeFormatter.ofPattern("hh:mm a", Locale.ENGLISH))
+    }
+
+    private companion object {
+        const val SUCCESS_DISPLAY_DURATION_MS = 1500L
     }
 }

@@ -107,7 +107,7 @@ class ProductSelectionActivity : AppCompatActivity() {
     }
 
     private fun resolveCategory(id: String?): ServiceCategory =
-        ServiceCategory.values().firstOrNull { it.id == id } ?: ServiceCategory.OTHER
+        ServiceCategory.values().firstOrNull { it.id == id } ?: ServiceCategory.BATTERY
 
     companion object {
         const val EXTRA_SELECTED_PRODUCT = "extra_selected_product"

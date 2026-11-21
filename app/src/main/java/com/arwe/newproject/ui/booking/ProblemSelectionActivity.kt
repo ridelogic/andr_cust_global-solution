@@ -65,7 +65,7 @@ class ProblemSelectionActivity : AppCompatActivity() {
     }
 
     private fun resolveCategory(id: String?): ServiceCategory =
-        ServiceCategory.values().firstOrNull { it.id == id } ?: ServiceCategory.OTHER
+        ServiceCategory.values().firstOrNull { it.id == id } ?: ServiceCategory.BATTERY
 
     private fun resolveProduct(category: ServiceCategory, id: String?): Product {
         val products = ProductCatalog.productsFor(category)

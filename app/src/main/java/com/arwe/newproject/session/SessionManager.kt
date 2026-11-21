@@ -10,6 +10,14 @@ class SessionManager(context: Context) {
     fun isLoggedIn(): Boolean = prefs.getBoolean(KEY_IS_LOGGED_IN, false)
 
     fun getCustomerName(): String? = prefs.getString(KEY_CUSTOMER_NAME, null)
+    fun getCustomerCode(): String? =
+    prefs.getString(KEY_CUSTOMER_CODE, null)
+
+fun getCustomerMobile(): String? =
+    prefs.getString(KEY_CUSTOMER_MOBILE, null)
+
+fun getCustomerEmail(): String? =
+    prefs.getString(KEY_CUSTOMER_EMAIL, null)
 
     fun getAuthToken(): String? = prefs.getString(KEY_AUTH_TOKEN, null)
 
@@ -28,6 +36,12 @@ class SessionManager(context: Context) {
             .putString(KEY_CUSTOMER_MOBILE, mobile)
             .putString(KEY_CUSTOMER_EMAIL, email)
             .apply()
+    }
+
+    /** Logout - clears every stored session field, not just the login flag, so nothing from the
+     * previous customer lingers for the next login (see ProfileActivity). */
+    fun clearSession() {
+        prefs.edit().clear().apply()
     }
 
     companion object {

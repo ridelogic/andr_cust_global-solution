@@ -22,3 +22,10 @@ data class CustomerAddressResponse(
     val longitude: String?,
     @SerializedName("is_default") val isDefault: Boolean
 )
+
+/** Matches DELETE customer/addresses/{id}'s response exactly - see
+ * AddressController::destroy(), which returns `response()->json(['message' => '...'])` (HTTP 200,
+ * not 204) rather than the deleted resource. */
+data class CustomerAddressDeleteResponse(
+    val message: String
+)

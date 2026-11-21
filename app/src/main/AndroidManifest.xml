@@ -76,6 +76,60 @@
             android:theme="@style/Theme.Newproject" />
 
         <activity
+            android:name=".ui.activeservice.ActiveServiceActivity"
+            android:exported="false"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.Newproject" />
+
+        <activity
+            android:name=".ui.servicehistory.ServiceHistoryActivity"
+            android:exported="false"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.Newproject" />
+
+        <activity
+            android:name=".ui.servicedetails.ServiceDetailsActivity"
+            android:exported="false"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.Newproject" />
+
+        <activity
+            android:name=".ui.profile.ProfileActivity"
+            android:exported="false"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.Newproject" />
+
+        <activity
+            android:name=".ui.profile.PersonalInformationActivity"
+            android:exported="false"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.Newproject" />
+
+        <activity
+            android:name=".ui.profile.AboutActivity"
+            android:exported="false"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.Newproject" />
+
+        <activity
+            android:name=".ui.settings.AppSettingsActivity"
+            android:exported="false"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.Newproject" />
+
+        <activity
+            android:name=".ui.addresses.MyAddressesActivity"
+            android:exported="false"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.Newproject" />
+
+        <activity
+            android:name=".ui.support.HelpSupportActivity"
+            android:exported="false"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.Newproject" />
+
+        <activity
             android:name=".ui.booking.ServiceCategoryActivity"
             android:exported="false"
             android:label="@string/app_name"

@@ -151,4 +151,46 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <LinearLayout
+        android:id="@+id/success_overlay"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/white"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible">
+
+        <ImageView
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:contentDescription="@string/cd_confirm_booking_success_icon"
+            android:src="@drawable/ic_radio_checked"
+            app:tint="@color/success_green" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/home_quick_card_spacing"
+            android:fontFamily="sans-serif-medium"
+            android:text="@string/confirm_booking_success_title"
+            android:textColor="@color/text_primary"
+            android:textSize="@dimen/login_title_text_size" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@string/confirm_booking_success_subtitle"
+            android:textColor="@color/text_secondary"
+            android:textSize="@dimen/login_subtitle_text_size" />
+
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

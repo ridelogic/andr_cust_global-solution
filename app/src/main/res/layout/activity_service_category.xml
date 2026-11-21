@@ -100,27 +100,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/home_quick_card_spacing" />
 
-            <include
-                android:id="@+id/category_electrical"
-                layout="@layout/item_service_category"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/home_quick_card_spacing" />
-
-            <include
-                android:id="@+id/category_plumbing"
-                layout="@layout/item_service_category"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/home_quick_card_spacing" />
-
-            <include
-                android:id="@+id/category_other"
-                layout="@layout/item_service_category"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/home_quick_card_spacing" />
-
         </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>

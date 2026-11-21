@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_category_card"
+    android:orientation="vertical"
+    android:padding="@dimen/category_card_padding">
+
+    <TextView
+        android:id="@+id/faq_question"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-medium"
+        android:textColor="@color/text_primary"
+        android:textSize="@dimen/login_subtitle_text_size"
+        tools:text="How do I book a service?" />
+
+    <TextView
+        android:id="@+id/faq_answer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:textColor="@color/text_secondary"
+        android:textSize="@dimen/category_description_text_size"
+        tools:text="Open Book a Service, select the service category, product, problem, address, date and time, then confirm the booking." />
+
+</LinearLayout>

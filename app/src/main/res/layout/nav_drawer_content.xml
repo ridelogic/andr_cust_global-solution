@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="@dimen/nav_drawer_default_width"
+    android:layout_height="match_parent"
+    android:background="@color/login_header_navy"
+    android:orientation="vertical"
+    tools:layout_gravity="start">
+
+    <!-- Header -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/login_content_horizontal_margin">
+
+        <ImageView
+            android:layout_width="@dimen/nav_drawer_logo_size"
+            android:layout_height="@dimen/nav_drawer_logo_size"
+            android:contentDescription="@string/splash_app_name"
+            android:src="@drawable/ic_global_services_logo" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="@string/splash_app_name"
+            android:textColor="@color/white"
+            android:textSize="@dimen/login_title_text_size" />
+
+        <TextView
+            android:id="@+id/drawer_customer_name_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:textColor="@color/banner_subtitle_text"
+            android:textSize="@dimen/login_subtitle_text_size"
+            tools:text="Karthik Kumar" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/illustration_placeholder_bg" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingVertical="8dp"
+            android:paddingHorizontal="12dp">
+
+            <include
+                android:id="@+id/drawer_menu_home"
+                layout="@layout/item_nav_drawer_menu" />
+
+            <include
+                android:id="@+id/drawer_menu_book_service"
+                layout="@layout/item_nav_drawer_menu" />
+
+            <include
+                android:id="@+id/drawer_menu_my_services"
+                layout="@layout/item_nav_drawer_menu" />
+
+            <include
+                android:id="@+id/drawer_menu_active_service"
+                layout="@layout/item_nav_drawer_menu" />
+
+            <include
+                android:id="@+id/drawer_menu_service_history"
+                layout="@layout/item_nav_drawer_menu" />
+
+            <include
+                android:id="@+id/drawer_menu_profile"
+                layout="@layout/item_nav_drawer_menu" />
+
+            <include
+                android:id="@+id/drawer_menu_settings"
+                layout="@layout/item_nav_drawer_menu" />
+
+            <include
+                android:id="@+id/drawer_menu_help_support"
+                layout="@layout/item_nav_drawer_menu" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginVertical="8dp"
+                android:background="@color/illustration_placeholder_bg" />
+
+            <include
+                android:id="@+id/drawer_menu_logout"
+                layout="@layout/item_nav_drawer_menu" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/illustration_placeholder_bg" />
+
+    <TextView
+        android:id="@+id/drawer_version_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="16dp"
+        android:textColor="@color/banner_subtitle_text"
+        android:textSize="@dimen/category_description_text_size"
+        tools:text="v1.0.0" />
+
+</LinearLayout>

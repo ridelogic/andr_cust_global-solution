@@ -1,6 +1,7 @@
 package com.arwe.newproject.data.repository
 
 import com.arwe.newproject.data.remote.CustomerAuthApiService
+import com.arwe.newproject.data.remote.dto.CustomerAddressDeleteResponse
 import com.arwe.newproject.data.remote.dto.CustomerAddressRequest
 import com.arwe.newproject.data.remote.dto.CustomerAddressResponse
 import com.arwe.newproject.data.remote.dto.CustomerDto
@@ -10,6 +11,7 @@ import com.arwe.newproject.data.remote.dto.CustomerRegisterResponse
 import com.arwe.newproject.data.remote.dto.CustomerRegisterWithOtpRequest
 import com.arwe.newproject.data.remote.dto.CustomerSendOtpRequest
 import com.arwe.newproject.data.remote.dto.CustomerSendOtpResponse
+import com.arwe.newproject.data.remote.dto.CustomerServiceRequestDetailResponse
 import com.arwe.newproject.data.remote.dto.CustomerServiceRequestListResponse
 import com.arwe.newproject.data.remote.dto.CustomerServiceRequestRequest
 import com.arwe.newproject.data.remote.dto.CustomerServiceRequestResponse
@@ -51,6 +53,12 @@ class RegisterWithOtpRepositoryTest {
         override suspend fun createAddress(request: CustomerAddressRequest): Response<CustomerAddressResponse> =
             throw UnsupportedOperationException("not used by this test")
 
+        override suspend fun updateAddress(id: Long, request: CustomerAddressRequest): Response<CustomerAddressResponse> =
+            throw UnsupportedOperationException("not used by this test")
+
+        override suspend fun deleteAddress(id: Long): Response<CustomerAddressDeleteResponse> =
+            throw UnsupportedOperationException("not used by this test")
+
         override suspend fun sendOtp(request: CustomerSendOtpRequest): Response<CustomerSendOtpResponse> =
             throw UnsupportedOperationException("not used by this test")
 
@@ -74,6 +82,9 @@ class RegisterWithOtpRepositoryTest {
             throw UnsupportedOperationException("not used by this test")
 
         override suspend fun getServiceRequests(): Response<CustomerServiceRequestListResponse> =
+            throw UnsupportedOperationException("not used by this test")
+
+        override suspend fun getServiceRequestDetail(id: Long): Response<CustomerServiceRequestDetailResponse> =
             throw UnsupportedOperationException("not used by this test")
     }
 

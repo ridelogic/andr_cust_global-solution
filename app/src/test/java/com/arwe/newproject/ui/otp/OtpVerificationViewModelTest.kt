@@ -5,12 +5,14 @@ import android.content.SharedPreferences
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.arwe.newproject.data.remote.dto.CustomerDto
 import com.arwe.newproject.data.repository.AddressListResult
+import com.arwe.newproject.data.repository.AddressDeleteResult
 import com.arwe.newproject.data.repository.AddressResult
 import com.arwe.newproject.data.repository.ApiErrorReason
 import com.arwe.newproject.data.repository.CustomerAuthRepository
 import com.arwe.newproject.data.repository.ProductBatteryTypeListResult
 import com.arwe.newproject.data.repository.RegisterResult
 import com.arwe.newproject.data.repository.ServiceRequestListResult
+import com.arwe.newproject.data.repository.ServiceRequestDetailResult
 import com.arwe.newproject.data.repository.ServiceRequestResult
 import com.arwe.newproject.data.repository.SendOtpResult
 import com.arwe.newproject.data.repository.VerifyOtpResult
@@ -114,6 +116,14 @@ class OtpVerificationViewModelTest {
             city: String, state: String, postalCode: String
         ): AddressResult = throw UnsupportedOperationException("not used by this test")
 
+        override suspend fun updateAddress(
+            id: Long, addressType: String, addressLine1: String, addressLine2: String?, landmark: String?,
+            city: String, state: String, postalCode: String, isDefault: Boolean
+        ): AddressResult = throw UnsupportedOperationException("not used by this test")
+
+        override suspend fun deleteAddress(id: Long): AddressDeleteResult =
+            throw UnsupportedOperationException("not used by this test")
+
         override suspend fun sendOtp(mobile: String): SendOtpResult =
             throw UnsupportedOperationException("not used by this test")
 
@@ -137,6 +147,9 @@ class OtpVerificationViewModelTest {
         ): ServiceRequestResult = throw UnsupportedOperationException("not used by this test")
 
         override suspend fun getServiceRequests(): ServiceRequestListResult =
+            throw UnsupportedOperationException("not used by this test")
+
+        override suspend fun getServiceRequestDetail(id: Long): ServiceRequestDetailResult =
             throw UnsupportedOperationException("not used by this test")
     }
 
